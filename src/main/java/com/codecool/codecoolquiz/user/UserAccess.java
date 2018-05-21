@@ -2,10 +2,7 @@ package com.codecool.codecoolquiz.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -15,6 +12,7 @@ public class UserAccess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+//    Temporary not needed Ukowski 21.05
 //    @JsonIgnore
 //    private Set<User> users;
 
