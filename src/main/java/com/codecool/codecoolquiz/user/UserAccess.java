@@ -12,9 +12,9 @@ public class UserAccess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    Temporary not needed Ukowski 21.05
-//    @JsonIgnore
-//    private Set<User> users;
+    @OneToMany
+    @JsonIgnore
+    private Set<User> users;
 
     public Long getId() {
         return id;
@@ -32,11 +32,11 @@ public class UserAccess {
         this.name = name;
     }
 
-//    public Set<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(Set<User> users) {
-//        this.users = users;
-//    }
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
