@@ -17,6 +17,7 @@ public class User {
     private String password;
     private boolean isActive = true;
     @ManyToOne
+    @JoinColumn(name = "user_access_id")
     private UserAccess userAccess;
 
     public Long getId() {
