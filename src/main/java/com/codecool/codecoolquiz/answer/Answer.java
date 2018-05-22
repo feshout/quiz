@@ -22,6 +22,16 @@ public class Answer {
     private User modifyBy;
     private Date modifyDate;
 
+    public Answer(String description, Question question, Boolean isCorrect, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.description = description;
+        this.question = question;
+        this.isCorrect = isCorrect;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
+
     public Long getId() {
         return id;
     }
