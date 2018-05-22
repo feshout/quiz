@@ -12,9 +12,6 @@ public class UserAccess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany
-    @JsonIgnore
-    private Set<User> users;
 
     public Long getId() {
         return id;
@@ -32,11 +29,4 @@ public class UserAccess {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }
