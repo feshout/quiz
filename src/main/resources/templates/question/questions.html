@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
     <body>
-        <h1>Paweł Rybka pływa</h1>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col" id="id">No</th>
+                <th scope="col" id="title">Title</th>
+                <th scope="col" id="description">Description</th>
+                <th scope="col" id="category">Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${questions}">
+                <td th:text="${questionStat.count}"></td>
+                <td th:text="${question.title}">Pytanie</td>
+                <td th:text="${question.description}">Opis pytania</td>
+                <td th:text="${question.category.getName()}">Kategoria</td>
+            </tr>
+            </tbody>
+        </table>
     </body>
 </html>
