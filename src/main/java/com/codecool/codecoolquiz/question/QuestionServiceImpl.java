@@ -11,10 +11,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     private QuestionRepository questionRepository;
 
+    public QuestionServiceImpl(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
 
     @Override
     public List<Question> getAll() {
-
         return questionRepository.getAllByIsActiveTrue();
     }
 
