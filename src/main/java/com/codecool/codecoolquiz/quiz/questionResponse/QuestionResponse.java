@@ -1,13 +1,13 @@
-package com.codecool.codecoolquiz.quiz;
+package com.codecool.codecoolquiz.quiz.questionResponse;
 
-import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.question.Question;
+import com.codecool.codecoolquiz.quiz.Quiz;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class QuestionResponse {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
