@@ -11,17 +11,17 @@ public class CategoryServiceImpl implements CategoryService {
 
      @Override
     public Iterable<Category> getAll() {
-        return this.categoryRepository.getAllByActiveTrue();
+        return this.categoryRepository.getAllByIsActiveTrue();
     }
 
     @Override
     public Category getById(long id) {
-        return this.categoryRepository.findByIdAndActiveTrue(id);
+        return this.categoryRepository.findByIdAndIsActiveTrue(id);
     }
 
     @Override
     public Category getByName(String name) {
-        return this.categoryRepository.findByNameAndActiveTrue(name);
+        return this.categoryRepository.findByNameAndIsActiveTrue(name);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void archiveById(long id) {
-        Category archivedCategory = this.categoryRepository.findByIdAndActiveTrue(id);
+        Category archivedCategory = this.categoryRepository.findByIdAndIsActiveTrue(id);
         archivedCategory.setActive(false);
         this.categoryRepository.save(archivedCategory);
     }
