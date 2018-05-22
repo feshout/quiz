@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(path = "/questions")
-public class QuestionController {
+public class QuestionController{
 
     private QuestionService questionService;
 
@@ -20,7 +20,7 @@ public class QuestionController {
     }
 
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public String getAll(Model model) {
         model.addAttribute(questionService.getAll());
         return "question/questions";
@@ -46,13 +46,13 @@ public class QuestionController {
         return "redirect:question/question/" + newQuestion.getId().toString();
     }
 
-    @RequestMapping(path = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/update/{id}", method = RequestMethod.GET)
     public String getQuestionFormToEdit(@PathVariable Long id, Model model){
         model.addAttribute(questionService.getById(id));
         return "question/questionForm";
     }
 
-    @RequestMapping(path = "/edit/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
     public String updateQuestion(@PathVariable Long id, @ModelAttribute Question question){
         questionService.update(question);
         return "redirect:question/" + id.toString();
