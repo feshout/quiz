@@ -22,14 +22,15 @@ public class QuestionController{
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute(questionService.getAll());
+
+        model.addAttribute("questions", questionService.getAll());
         return "question/questions";
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public String getQuestionById(@PathVariable Long id, Model model) {
 
-        model.addAttribute(questionService.getById(id));
+        model.addAttribute("question", questionService.getById(id));
         return "question/question";
     }
 
@@ -48,7 +49,7 @@ public class QuestionController{
 
     @RequestMapping(path = "/update/{id}", method = RequestMethod.GET)
     public String getQuestionFormToEdit(@PathVariable Long id, Model model){
-        model.addAttribute(questionService.getById(id));
+        model.addAttribute("question", questionService.getById(id));
         return "question/questionForm";
     }
 
