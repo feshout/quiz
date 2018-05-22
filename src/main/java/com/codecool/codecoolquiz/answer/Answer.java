@@ -13,7 +13,7 @@ public class Answer {
     private Long id;
     private String description;
     @ManyToOne
-    @JoinColumn(name = "question_id")
+//    @JoinColumn(name = "question_id")
     private Question question;
     private Boolean isCorrect;
     @ManyToOne

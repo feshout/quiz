@@ -13,10 +13,10 @@ public class Quiz {
     private Long id;
     private Date startDate;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+//    @JoinColumn(name = "user_id")
     private User createBy;
-    @OneToMany
-    private Set<QuestionResponse> responses;
+//    @OneToMany
+//    private Set<QuestionResponse> responses;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Quiz {
         this.createBy = createBy;
     }
 
-    public Set<QuestionResponse> getResponses() {
-        return responses;
-    }
-
-    public void setResponses(Set<QuestionResponse> responses) {
-        this.responses = responses;
-    }
+//    public Set<QuestionResponse> getResponses() {
+//        return responses;
+//    }
+//
+//    public void setResponses(Set<QuestionResponse> responses) {
+//        this.responses = responses;
+//    }
 }

@@ -20,7 +20,7 @@ public class Question {
     private String description;
     private Boolean isActive = true;
     @ManyToOne
-    @JoinColumn(name = "category_id")
+//    @JoinColumn(name = "category_id")
     private Category category;
     @ManyToOne
     private User createdBy;
@@ -29,11 +29,11 @@ public class Question {
     private User modifyBy;
     private Date modifyDate;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(mappedBy = "questions")
     private Set<Tag> tags;
-    @JsonIgnore
-    @OneToMany
-    private Set<Answer> answers;
+//    @JsonIgnore
+//    @OneToMany
+//    private Set<Answer> answers;
 
     public Long getId() {
         return id;
@@ -115,12 +115,12 @@ public class Question {
         this.tags = tags;
     }
 
-    public Set<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(Set<Answer> answers) {
-        this.answers = answers;
-    }
+//    public Set<Answer> getAnswers() {
+//        return answers;
+//    }
+//
+//    public void setAnswers(Set<Answer> answers) {
+//        this.answers = answers;
+//    }
 
 }

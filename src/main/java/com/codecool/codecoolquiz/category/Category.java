@@ -22,9 +22,9 @@ public class Category {
     @ManyToOne
     private User modifyBy;
     private Date modifyDate;
-    @JsonIgnore
-    @OneToMany
-    private Set<Question> questions;
+//    @JsonIgnore
+//    @OneToMany
+//    private Set<Question> questions;
 
     public Long getId() {
         return id;
@@ -82,11 +82,11 @@ public class Category {
         this.modifyDate = modifyDate;
     }
 
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Set<Question> questions) {
-        this.questions = questions;
-    }
+//    public Set<Question> getQuestions() {
+//        return questions;
+//    }
+//
+//    public void setQuestions(Set<Question> questions) {
+//        this.questions = questions;
+//    }
 }
