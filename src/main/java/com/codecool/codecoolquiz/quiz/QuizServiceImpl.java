@@ -1,6 +1,7 @@
 package com.codecool.codecoolquiz.quiz;
 
 
+import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.answer.AnswerRepository;
 import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.category.CategoryRepository;
@@ -45,6 +46,7 @@ public class QuizServiceImpl implements QuizService {
         List<Question> randomQuestions = getRandomQuestions(questions, count);
 
         Quiz quiz = new Quiz(new Date(), userRepository.findOne(1L));
+        createResponses(quiz, questions);
 
     }
 
@@ -65,11 +67,11 @@ public class QuizServiceImpl implements QuizService {
         return questionRepository.findByCategory(categoryId);
     }
 
-//    private void createResponses(Quiz quiz, List<Question> questions){
-//
-//        for (int i = 0; i < questions.size(); i++){
-//            responseRepository.save(new QuestionResponse())
-//        }
-//    }
+    private void createResponses(Quiz quiz, List<Question> questions){
+
+        for (int i = 0; i < questions.size(); i++){
+            responseRepository.save(new QuestionResponse(quiz, questions.get(i), null));
+        }
+    }
 
 }
