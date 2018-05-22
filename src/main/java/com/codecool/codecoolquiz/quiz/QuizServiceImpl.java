@@ -1,7 +1,5 @@
 package com.codecool.codecoolquiz.quiz;
 
-
-import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.answer.AnswerRepository;
 import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.category.CategoryRepository;
@@ -13,6 +11,7 @@ import com.codecool.codecoolquiz.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class QuizServiceImpl implements QuizService {
@@ -58,11 +57,8 @@ public class QuizServiceImpl implements QuizService {
     }
 
     private List<Question> getQuestions(List<Category> categories) {
-        List<Long> categoryId = new ArrayList<>();
 
-        for (Category cat: categories){
-            categoryId.add(cat.getId());
-        }
+        List<Long> categoryId = categories.stream().map(Category::getId).collect(Collectors.toList());
 
         return questionRepository.findByCategory(categoryId);
     }
