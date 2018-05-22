@@ -4,9 +4,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-    Iterable<Category> getAllByActiveTrue();
+    Iterable<Category> getAllByIsActiveTrue();
 
-    Category findByIdAndActiveTrue(long id);
+    Category findByIdAndIsActiveTrue(long id);
 
-    Category findByNameAndActiveTrue(String name);
+    Category findByNameAndIsActiveTrue(String name);
 }
