@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "person")
 public class User {
 
     @Id
@@ -17,7 +18,6 @@ public class User {
     private String password;
     private boolean isActive = true;
     @ManyToOne
-    @JoinColumn(name = "user_access_id")
     private UserAccess userAccess;
 
     public Long getId() {
