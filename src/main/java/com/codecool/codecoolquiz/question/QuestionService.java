@@ -11,11 +11,16 @@ public interface QuestionService {
 
     Question getById(Long id);
 
+    Question getByTitle(String title);
+
     List<Question> getAllByCategory(Category category);
 
-    void saveOrUpdate(Question question);
+    void save(Question question);
 
-    List<Question> getAllByTag(Tag tag);
+    void update(Question question);
+
+//    Uncomment after implementing tag repository
+//    List<Question> getAllByTag(Tag tag);
 
     void archiveById(Long id);
 }
