@@ -12,13 +12,11 @@ public class QuestionResponse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "quiz_id")
     private Quiz quiz;
     @ManyToOne
-    @JoinColumn(name = "question_id")
     private Question question;
-    @OneToMany
-    private Set<Answer> answers;
+    @OneToOne
+    private Answer answer;
 
     public Long getId() {
         return id;
@@ -44,11 +42,11 @@ public class QuestionResponse {
         this.question = question;
     }
 
-    public Set<Answer> getAnswers() {
-        return answers;
+    public Answer getAnswer() {
+        return answer;
     }
 
-    public void setAnswers(Set<Answer> answers) {
-        this.answers = answers;
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
 }
