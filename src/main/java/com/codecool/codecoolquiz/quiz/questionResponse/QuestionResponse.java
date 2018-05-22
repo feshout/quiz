@@ -15,6 +15,8 @@ public class QuestionResponse {
     private Quiz quiz;
     @ManyToOne
     private Question question;
+    @OneToOne
+    private Answer answer;
 
     public Long getId() {
         return id;
@@ -40,4 +42,11 @@ public class QuestionResponse {
         this.question = question;
     }
 
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
+    }
 }
