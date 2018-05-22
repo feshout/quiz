@@ -8,12 +8,21 @@ import java.util.Set;
 
 @Entity
 public class Quiz {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date startDate;
     @ManyToOne
     private User createBy;
+
+    public Quiz(Date startDate, User createBy) {
+        this.startDate = startDate;
+        this.createBy = createBy;
+    }
+
+    public Quiz() {
+    }
 
     public Long getId() {
         return id;

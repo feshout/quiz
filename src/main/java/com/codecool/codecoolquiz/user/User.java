@@ -1,7 +1,5 @@
 package com.codecool.codecoolquiz.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +17,18 @@ public class User {
     private boolean isActive = true;
     @ManyToOne
     private UserAccess userAccess;
+
+    public User() {
+    }
+
+    public User(String name, Date date, String login, String password, boolean isActive, UserAccess userAccess) {
+        this.name = name;
+        this.date = date;
+        this.login = login;
+        this.password = password;
+        this.isActive = isActive;
+        this.userAccess = userAccess;
+    }
 
     public Long getId() {
         return id;

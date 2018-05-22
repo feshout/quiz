@@ -31,6 +31,19 @@ public class Question {
     @ManyToMany(mappedBy = "questions")
     private Set<Tag> tags;
 
+    public Question(String title, String description,
+                    Boolean isActive, Category category,
+                    User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.title = title;
+        this.description = description;
+        this.isActive = isActive;
+        this.category = category;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
+
     public Long getId() {
         return id;
     }

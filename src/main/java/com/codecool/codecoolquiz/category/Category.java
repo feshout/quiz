@@ -23,6 +23,15 @@ public class Category {
     private User modifyBy;
     private Date modifyDate;
 
+    public Category(String name, boolean isActive, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.name = name;
+        this.isActive = isActive;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
+
     public Long getId() {
         return id;
     }
