@@ -32,7 +32,7 @@ public class CategoryController {
 
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
-        model.addAttribute(new Category());
+        model.addAttribute("category", new Category());
         return "category/categoryform";
     }
 
@@ -46,12 +46,12 @@ public class CategoryController {
 
     @GetMapping(path = "/edit/{id}")
     public String getCreateForm(@PathVariable Long id, Model model){
-        model.addAttribute(this.categoryService.getById(id));
+        model.addAttribute("category", this.categoryService.getById(id));
         return "category/categoryform";
     }
 
     @PutMapping(path = "/edit/{id}")
-    public String update(@RequestBody Category category) {
+    public String update(@ModelAttribute Category category) {
         this.categoryService.update(category);
         return "redirect:categories/" + category.getId();
     }
