@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+    <section>
+        <div th:if="${question != null}">
+            <form method="put" th:object="${question}">
+                <p>Title:</p>
+                <input th:value="${question.title}" th:field="${question.title}">
+                <p>Description:</p>
+                <input th:value="${question.description}" th:field="${question.description}"></input>
+                <p>Category:</p>
+                <select th:field="${question.category}">
+                    <option th:each="category : ${categories}"
+                            th:value="${category}"
+                            th:text="${category.name}"></option>
+                </select>
+                <p>Answers:</p>
+                <ul th:each="answer : ${answers}">
+                    <li th:object="answer" th:text="${answer.description}" th:value="${answer}"> </li>
+                </ul>
+            </form>
+        </div>
+        <div th:if="${question == null}">
+            <p>Title:</p>
+            <input th:value="${question.title}"/>
+            <p>Description:</p>
+            <input th:value="${question.description}"/>
+            <p>Category:</p>
+            <select th:field="${question.category}"/>
+                <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"></option>
+            </select>
+            <span th:text="${question.category.getName()}"></span>
+            <p>Answers:</p>
+            <ul th:each="answer : ${answers}">
+                <li th:text="${answer.description}"></li>
+            </ul>
+        </div>
+
+
+    </section>
+
 </body>
 </html>
