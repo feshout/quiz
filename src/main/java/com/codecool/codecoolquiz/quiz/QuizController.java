@@ -16,7 +16,7 @@ public class QuizController {
 
     private QuizServiceImpl service;
     private QuestionResponseServiceImpl responseService;
-    
+
     @Autowired
     public QuizController(QuizServiceImpl service, QuestionResponseServiceImpl responseService) {
         this.service = service;
