@@ -1,6 +1,5 @@
 package com.codecool.codecoolquiz.question;
 
-import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.tag.Tag;
 import com.codecool.codecoolquiz.user.User;
