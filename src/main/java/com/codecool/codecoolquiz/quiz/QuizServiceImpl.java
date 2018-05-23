@@ -5,8 +5,8 @@ import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.category.CategoryRepository;
 import com.codecool.codecoolquiz.question.Question;
 import com.codecool.codecoolquiz.question.QuestionRepository;
-import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
-import com.codecool.codecoolquiz.questionResponse.QuestionResponseRepository;
+import com.codecool.codecoolquiz.quiz.questionResponse.QuestionResponse;
+import com.codecool.codecoolquiz.quiz.questionResponse.QuestionResponseRepository;
 import com.codecool.codecoolquiz.user.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +74,4 @@ public class QuizServiceImpl implements QuizService {
             responseRepository.save(new QuestionResponse(quiz, question, null));
         }
     }
-
-    public Question getSingleQuestion()
 }
