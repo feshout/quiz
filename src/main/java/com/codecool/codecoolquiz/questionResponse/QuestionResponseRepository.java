@@ -1,4 +1,4 @@
-package com.codecool.codecoolquiz.quiz.questionResponse;
+package com.codecool.codecoolquiz.questionResponse;
 
 import org.springframework.data.repository.CrudRepository;
 

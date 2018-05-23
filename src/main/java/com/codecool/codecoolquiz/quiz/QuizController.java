@@ -3,8 +3,8 @@ package com.codecool.codecoolquiz.quiz;
 
 import com.codecool.codecoolquiz.category.Category;
 
-import com.codecool.codecoolquiz.quiz.questionResponse.QuestionResponse;
-import com.codecool.codecoolquiz.quiz.questionResponse.QuestionResponseServiceImpl;
+import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
+import com.codecool.codecoolquiz.questionResponse.QuestionResponseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

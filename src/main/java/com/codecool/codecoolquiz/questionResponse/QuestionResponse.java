@@ -1,4 +1,4 @@
-package com.codecool.codecoolquiz.quiz.questionResponse;
+package com.codecool.codecoolquiz.questionResponse;
 
 import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.question.Question;
