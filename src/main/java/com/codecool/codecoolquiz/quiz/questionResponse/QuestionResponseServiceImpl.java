@@ -22,4 +22,9 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
     public QuestionResponse findByQuestionId(Long id) {
         return repository.findByQuestionId(id);
     }
+
+    @Override
+    public void sendResponse(QuestionResponse userResponse) {
+        repository.save(userResponse);
+    }
 }
