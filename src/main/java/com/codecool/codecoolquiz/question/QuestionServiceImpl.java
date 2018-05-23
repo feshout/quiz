@@ -1,6 +1,8 @@
 package com.codecool.codecoolquiz.question;
 
 import com.codecool.codecoolquiz.category.Category;
+import com.codecool.codecoolquiz.category.CategoryRepository;
+import com.codecool.codecoolquiz.form.QuestionForm;
 import com.codecool.codecoolquiz.tag.Tag;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.List;
 public class QuestionServiceImpl implements QuestionService {
 
     private QuestionRepository questionRepository;
+    private CategoryRepository categoryRepository;
 
-    public QuestionServiceImpl(QuestionRepository questionRepository) {
+    public QuestionServiceImpl(QuestionRepository questionRepository, CategoryRepository categoryRepository) {
         this.questionRepository = questionRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -42,9 +46,15 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void update(Question question) {
+    public void update(QuestionForm questionForm, Long id) {
 
+        Question question = questionRepository.findOne(id);
+        question.setTitle(questionForm.getTitle());
+        question.setDescription(questionForm.getDescription());
+        Category category = categoryRepository.findOne(questionForm.getCategoryId());
+        question.setCategory(category);
         questionRepository.save(question);
+
     }
 //    Uncomment after implementing tag repository
 //    @Override

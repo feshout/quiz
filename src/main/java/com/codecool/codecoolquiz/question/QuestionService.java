@@ -1,6 +1,7 @@
 package com.codecool.codecoolquiz.question;
 
 import com.codecool.codecoolquiz.category.Category;
+import com.codecool.codecoolquiz.form.QuestionForm;
 import com.codecool.codecoolquiz.tag.Tag;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface QuestionService {
 
     void save(Question question);
 
-    void update(Question question);
+    void update(QuestionForm questionForm, Long id);
 
 //    Uncomment after implementing tag repository
 //    List<Question> getAllByTag(Tag tag);

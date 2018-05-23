@@ -1,6 +1,9 @@
 package com.codecool.codecoolquiz.question;
 
 import com.codecool.codecoolquiz.answer.AnswerService;
+import com.codecool.codecoolquiz.category.Category;
+import com.codecool.codecoolquiz.category.CategoryService;
+import com.codecool.codecoolquiz.form.QuestionForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,11 +19,13 @@ public class QuestionController{
 
     private QuestionService questionService;
     private AnswerService answerService;
+    private CategoryService categoryService;
 
-    QuestionController(QuestionService questionService, AnswerService answerService){
+    QuestionController(QuestionService questionService, AnswerService answerService, CategoryService categoryService){
 
         this.questionService = questionService;
         this.answerService = answerService;
+        this.categoryService = categoryService;
     }
 
 
@@ -54,14 +59,20 @@ public class QuestionController{
 
     @RequestMapping(path = "/update/{id}", method = RequestMethod.GET)
     public String getQuestionFormToEdit(@PathVariable Long id, Model model){
-        model.addAttribute("question", questionService.getById(id));
+
+        Question question = questionService.getById(id);
+        model.addAttribute("question", question);
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("answers", answerService.getAllByQuestion(question));
         return "question/questionForm";
     }
 
     @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
-    public String updateQuestion(@PathVariable Long id, @ModelAttribute Question question){
-        questionService.update(question);
-        return "redirect:question/" + id.toString();
+    public String updateQuestion(@PathVariable Long id, @ModelAttribute("questionForm") QuestionForm questionForm, @ModelAttribute Category category, Model model){
+        questionService.update(questionForm, id);
+        model.addAttribute("question", questionService.getById(id));
+
+        return "question/question";
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)

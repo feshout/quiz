@@ -8,21 +8,26 @@
 
     <section>
         <div th:if="${question != null}">
-            <form method="put" th:object="${question}">
+            <form th:action="@{${question.id}}" th:method="PUT" th:object="${questionForm}">
                 <p>Title:</p>
-                <input th:value="${question.title}" th:field="${question.title}">
+                <input th:value="${question.title}" name="title"/>
                 <p>Description:</p>
-                <input th:value="${question.description}" th:field="${question.description}"></input>
+                <input th:value="${question.description}" name="description"/>
                 <p>Category:</p>
-                <select th:field="${question.category}">
-                    <option th:each="category : ${categories}"
-                            th:value="${category}"
-                            th:text="${category.name}"></option>
+                <select name="categoryId">
+                    <option th:selected="${question.category.getId() == category.getId()}"
+                            th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}">
+                    </option>
                 </select>
-                <p>Answers:</p>
-                <ul th:each="answer : ${answers}">
-                    <li th:object="answer" th:text="${answer.description}" th:value="${answer}"> </li>
-                </ul>
+                <!--<p>Answers:</p>-->
+                <!--<ul th:each="answer : ${answers}">-->
+                    <!--<li>-->
+                        <!--<input th:object="${answer}" th:value="${answer.getDescription()}" />-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <input th:type="submit" th:value="Save"/>
             </form>
         </div>
         <div th:if="${question == null}">
@@ -31,7 +36,7 @@
             <p>Description:</p>
             <input th:value="${question.description}"/>
             <p>Category:</p>
-            <select th:field="${question.category}"/>
+            <select th:field="${question.category}">
                 <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"></option>
             </select>
             <span th:text="${question.category.getName()}"></span>
