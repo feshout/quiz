@@ -16,10 +16,11 @@ public class QuizController {
 
     private QuizServiceImpl service;
     private QuestionResponseServiceImpl responseService;
-
+    
     @Autowired
-    public QuizController(QuizServiceImpl service) {
+    public QuizController(QuizServiceImpl service, QuestionResponseServiceImpl responseService) {
         this.service = service;
+        this.responseService = responseService;
     }
 
     @GetMapping("/")
@@ -41,10 +42,10 @@ public class QuizController {
         return responseService.findByQuestionId(id);
     }
 
-    @PostMapping("/{quizId}/question/{questionNumber}")
+    @PostMapping("/{quizId}/question/{id}")
     public void sendResponse(@RequestBody QuestionResponse userResponse) {
-
-        service.sendResponse(userResponse);
+        userResponse.setAnswer(null);
+        responseService.sendResponse(userResponse);
     }
 }
 
