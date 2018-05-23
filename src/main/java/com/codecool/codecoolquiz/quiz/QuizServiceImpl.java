@@ -65,8 +65,8 @@ public class QuizServiceImpl implements QuizService {
 
     private void createResponses(Quiz quiz, List<Question> questions){
 
-        for (int i = 0; i < questions.size(); i++){
-            responseRepository.save(new QuestionResponse(quiz, questions.get(i), null));
+        for (Question question : questions) {
+            responseRepository.save(new QuestionResponse(quiz, question, null));
         }
     }
 
