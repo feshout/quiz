@@ -33,6 +33,8 @@ public class CategoryController {
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
         model.addAttribute("category", new Category());
+        model.addAttribute("title", "new");
+        model.addAttribute("button", "new");
         return "category/categoryform";
     }
 
@@ -47,6 +49,8 @@ public class CategoryController {
     @GetMapping(path = "/edit/{id}")
     public String getCreateForm(@PathVariable Long id, Model model){
         model.addAttribute("category", this.categoryService.getById(id));
+        model.addAttribute("title", "edit");
+        model.addAttribute("button", "edit");
         return "category/categoryform";
     }
 
