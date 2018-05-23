@@ -1,10 +1,8 @@
 package com.codecool.codecoolquiz.quiz;
 
 import com.codecool.codecoolquiz.user.User;
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 public class Quiz {
