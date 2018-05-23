@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--block with new category or edit category x-->
+    <!--<title>Category form</title>-->
+    <th:block th:include="category/title :: new" />
 </head>
-<body>
 
+<body>
+    <form th:action="@{/categories/new}" th:object="${category}" method="post" >
+        <label for="name">Category name</label>
+        <input type="text" th:field="*{name}" th:value="${category}" id="name"/>
+
+    <!--button change depend on new or edit-->
+        <!--<input type="submit" value="Add category" />-->
+        <th:block th:include="category/button :: new" />
+    </form>
 </body>
 </html>
