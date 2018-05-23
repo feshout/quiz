@@ -1,5 +1,6 @@
 package com.codecool.codecoolquiz.question;
 
+import com.codecool.codecoolquiz.answer.AnswerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class QuestionController{
 
     private QuestionService questionService;
+    private AnswerService answerService;
 
-    QuestionController(QuestionService questionService){
+    QuestionController(QuestionService questionService, AnswerService answerService){
+
         this.questionService = questionService;
+        this.answerService = answerService;
     }
 
 
