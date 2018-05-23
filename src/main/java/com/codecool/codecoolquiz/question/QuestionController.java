@@ -33,8 +33,9 @@ public class QuestionController{
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public String getQuestionById(@PathVariable Long id, Model model) {
-
-        model.addAttribute("question", questionService.getById(id));
+        Question question = questionService.getById(id);
+        model.addAttribute("question", question);
+        model.addAttribute("answers", answerService.getAllByQuestion(question));
         return "question/question";
     }
 
