@@ -31,6 +31,7 @@ public class QuizServiceImpl implements QuizService {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
+        this.responseRepository = responseRepository;
     }
 
     @Override
