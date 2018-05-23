@@ -35,6 +35,7 @@ public class CategoryController {
         model.addAttribute("category", new Category());
         model.addAttribute("title", "new");
         model.addAttribute("button", "new");
+
         return "category/categoryform";
     }
 
@@ -51,6 +52,7 @@ public class CategoryController {
         model.addAttribute("category", this.categoryService.getById(id));
         model.addAttribute("title", "edit");
         model.addAttribute("button", "edit");
+
         return "category/categoryform";
     }
 
