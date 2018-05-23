@@ -6,4 +6,6 @@ public interface QuestionResponseService {
 
     List<QuestionResponse> findAll();
     QuestionResponse findByQuestionId(Long id);
+
+    void sendResponse(QuestionResponse userResponse);
 }
