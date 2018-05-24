@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-
-</body>
+    <body>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col" id="id">Id</th>
+                <th scope="col" id="name">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${categoryStat.count}"></td>
+                <td th:text="${category.name}">Kategoria</td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
 </html>

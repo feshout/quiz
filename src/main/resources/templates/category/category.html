@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
-
+    <section>
+        <p>Id:</p>
+        <span th:text="${category.id}"></span>
+        <p>Category name:</p>
+        <span th:text="${category.name}"></span>
+        <!--Uncomment after implementation of dating records-->
+        <!--<p>Created by:</p>-->
+        <!--<span th:text="${category.getCreatedBy().getName()}"></span>-->
+        <!--<p>Creation date:</p>-->
+        <!--<span th:text="${category.getCreateDate()}"></span>-->
+        <!--<p>Modify by:</p>-->
+        <!--<span th:text="${category.getModifyBy().getName()}"></span>-->
+        <!--<p>Last modification date:</p>-->
+        <!--<span th:text="${category.getModifyDate()}"></span>-->
+    </section>
 </body>
 </html>
