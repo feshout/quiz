@@ -72,6 +72,6 @@ public class CategoryController {
     @DeleteMapping(path = "/{id}")
     public String delete(@PathVariable Long id) {
         this.categoryService.archiveById(id);
-        return "redirect:/categories";
+        return "category/categories";
     }
 }
