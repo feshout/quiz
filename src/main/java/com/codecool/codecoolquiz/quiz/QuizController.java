@@ -33,17 +33,19 @@ public class QuizController {
 
         service.createQuiz(categories, count);
 
-        return null;
+        return categories;
     }
 
     @GetMapping("/{quizId}/question/{id}")
-    public QuestionResponse getQuestion(@PathVariable("id") Long id) {
+    public QuestionResponse getQuestion(@PathVariable("id") Long id,
+                                        @PathVariable("quizId") Long quizId) {
 
-        return responseService.findByQuestionId(id);
+        return responseService.findOneWhereAnswerIsNullAndQuizId(quizId);
     }
 
     @PostMapping("/{quizId}/question/{id}")
     public void sendResponse(@RequestBody QuestionResponse userResponse) {
+
         userResponse.setAnswer(null);
         responseService.sendResponse(userResponse);
     }
