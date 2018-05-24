@@ -14,7 +14,7 @@ public class CategoryController {
 
     @GetMapping(path = "")
     public String index(Model model) {
-        model.addAttribute(this.categoryService.getAll());
+        model.addAttribute("categories", this.categoryService.getAll());
         return "category/categories";
     }
 
