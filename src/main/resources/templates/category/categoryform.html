@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <form th:action="@{/categories/new}" th:object="${category}" method="post" >
+    <form th:object="${category}" th:method="${method}" >
         <label for="name">Category name</label>
         <input type="text" th:field="*{name}" th:value="${category}" id="name"/>
 
