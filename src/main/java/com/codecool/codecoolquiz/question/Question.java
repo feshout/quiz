@@ -31,6 +31,9 @@ public class Question {
     @ManyToMany(mappedBy = "questions")
     private Set<Tag> tags;
 
+    public Question() {
+    }
+
     public Question(String title, String description,
                     Boolean isActive, Category category,
                     User createdBy, Date createDate, User modifyBy, Date modifyDate) {

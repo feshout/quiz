@@ -23,6 +23,9 @@ public class Category {
     private User modifyBy;
     private Date modifyDate;
 
+    public Category() {
+    }
+
     public Category(String name, boolean isActive, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
         this.name = name;
         this.isActive = isActive;

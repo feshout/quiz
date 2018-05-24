@@ -24,6 +24,9 @@ public class Tag {
     private User modifyBy;
     private Date modifyDate;
 
+    public Tag() {
+    }
+
     public Tag(String name, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
         this.name = name;
         this.createdBy = createdBy;
