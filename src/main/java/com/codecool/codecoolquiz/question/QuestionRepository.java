@@ -1,14 +1,20 @@
 package com.codecool.codecoolquiz.question;
 
 import com.codecool.codecoolquiz.category.Category;
-import com.codecool.codecoolquiz.tag.Tag;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.repository.query.Param;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface QuestionRepository extends CrudRepository<Question, Long> {
+
+    @Query(
+            "SELECT question FROM Question question WHERE category_id IN :categories"
+    )
+    List<Question> findByCategory(@Param("categories")List<Long> categories);
+
 
     List<Question> getAllByIsActiveTrue();
 
