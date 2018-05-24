@@ -33,36 +33,45 @@ public class CategoryController {
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
         model.addAttribute("category", new Category());
+
         model.addAttribute("title", "new");
         model.addAttribute("button", "new");
+        model.addAttribute("action", "categories/new");
+        model.addAttribute("method", "post");
+        
         return "category/categoryform";
     }
 
     @PostMapping(path = "/new")
     public String create(@ModelAttribute Category category) {
         this.categoryService.save(category);
-        Category newCategory = this.categoryService.getByName(category.getName());
+       category = this.categoryService.getByName(category.getName());
 
-        return "redirect:categories/" + newCategory.getId();
+        return "category/category";
     }
 
     @GetMapping(path = "/edit/{id}")
     public String getCreateForm(@PathVariable Long id, Model model){
-        model.addAttribute("category", this.categoryService.getById(id));
+        Category editCategory = this.categoryService.getById(id);
+        model.addAttribute("category", editCategory);
+
         model.addAttribute("title", "edit");
         model.addAttribute("button", "edit");
+        model.addAttribute("action", "categories/edit/" + editCategory.getId());
+        model.addAttribute("method", "put");
+
         return "category/categoryform";
     }
 
     @PutMapping(path = "/edit/{id}")
     public String update(@ModelAttribute Category category) {
         this.categoryService.update(category);
-        return "redirect:categories/" + category.getId();
+        return "category/category";
     }
 
     @DeleteMapping(path = "/{id}")
     public String delete(@PathVariable Long id) {
         this.categoryService.archiveById(id);
-        return "redirect:category/categories";
+        return "redirect:/categories";
     }
 }
