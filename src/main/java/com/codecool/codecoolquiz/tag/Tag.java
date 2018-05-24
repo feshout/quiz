@@ -14,7 +14,7 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JsonIgnore
+    private String name;
     @ManyToMany
     private Set<Question> questions;
     @ManyToOne
@@ -23,6 +23,17 @@ public class Tag {
     @ManyToOne
     private User modifyBy;
     private Date modifyDate;
+
+    public Tag() {
+    }
+
+    public Tag(String name, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.name = name;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
 
     public Long getId() {
         return id;
@@ -70,5 +81,13 @@ public class Tag {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

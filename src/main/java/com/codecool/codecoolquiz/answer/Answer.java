@@ -13,14 +13,30 @@ public class Answer {
     private Long id;
     private String description;
     @ManyToOne
+    @JoinColumn(name = "question")
     private Question question;
     private Boolean isCorrect;
     @ManyToOne
+    @JoinColumn(name = "created_by")
     private User createdBy;
     private Date createDate;
     @ManyToOne
+    @JoinColumn(name = "modify_by")
     private User modifyBy;
     private Date modifyDate;
+
+    public Answer() {
+    }
+
+    public Answer(String description, Question question, Boolean isCorrect, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.description = description;
+        this.question = question;
+        this.isCorrect = isCorrect;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
 
     public Long getId() {
         return id;
