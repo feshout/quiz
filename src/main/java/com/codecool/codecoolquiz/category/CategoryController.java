@@ -38,7 +38,7 @@ public class CategoryController {
         model.addAttribute("button", "new");
         model.addAttribute("action", "categories/new");
         model.addAttribute("method", "post");
-        
+
         return "category/categoryform";
     }
 
