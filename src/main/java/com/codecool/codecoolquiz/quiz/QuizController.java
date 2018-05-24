@@ -2,9 +2,6 @@ package com.codecool.codecoolquiz.quiz;
 
 
 import com.codecool.codecoolquiz.category.Category;
-
-import com.codecool.codecoolquiz.form.ResponseForm;
-import com.codecool.codecoolquiz.question.QuestionRepository;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
