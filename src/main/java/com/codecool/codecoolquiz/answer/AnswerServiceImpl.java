@@ -16,6 +16,7 @@ public class AnswerServiceImpl implements AnswerService{
 
     @Override
     public List<Answer> getAllByQuestion(Question question) {
-        return answerRepository.getAllByQuestion(question);
+//        return answerRepository.getAllByQuestion(question);
+        return null;
     }
 }

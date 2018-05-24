@@ -1,5 +1,6 @@
 package com.codecool.codecoolquiz.question;
 
+import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.tag.Tag;
 import com.codecool.codecoolquiz.user.User;
@@ -19,6 +20,14 @@ public class Question {
     private String description;
     private Boolean isActive = true;
     @ManyToOne
+    private Answer answer1;
+    @ManyToOne
+    private Answer answer2;
+    @ManyToOne
+    private Answer answer3;
+    @ManyToOne
+    private Answer answer4;
+    @ManyToOne
     private Category category;
     @ManyToOne
     private User createdBy;
@@ -33,17 +42,10 @@ public class Question {
     public Question() {
     }
 
-    public Question(String title, String description,
-                    Boolean isActive, Category category,
-                    User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+    public Question(String title, String description, Boolean isActive) {
         this.title = title;
         this.description = description;
         this.isActive = isActive;
-        this.category = category;
-        this.createdBy = createdBy;
-        this.createDate = createDate;
-        this.modifyBy = modifyBy;
-        this.modifyDate = modifyDate;
     }
 
     public Long getId() {
@@ -126,4 +128,35 @@ public class Question {
         this.tags = tags;
     }
 
+    public Answer getAnswer1() {
+        return answer1;
+    }
+
+    public void setAnswer1(Answer answer1) {
+        this.answer1 = answer1;
+    }
+
+    public Answer getAnswer2() {
+        return answer2;
+    }
+
+    public void setAnswer2(Answer answer2) {
+        this.answer2 = answer2;
+    }
+
+    public Answer getAnswer3() {
+        return answer3;
+    }
+
+    public void setAnswer3(Answer answer3) {
+        this.answer3 = answer3;
+    }
+
+    public Answer getAnswer4() {
+        return answer4;
+    }
+
+    public void setAnswer4(Answer answer4) {
+        this.answer4 = answer4;
+    }
 }

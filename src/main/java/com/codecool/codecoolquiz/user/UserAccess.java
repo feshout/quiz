@@ -13,6 +13,10 @@ public class UserAccess {
     private Long id;
     private String name;
 
+    public UserAccess(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

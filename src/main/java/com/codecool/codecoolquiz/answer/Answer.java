@@ -12,30 +12,14 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "question")
-    private Question question;
-    private Boolean isCorrect;
-    @ManyToOne
-    @JoinColumn(name = "created_by")
-    private User createdBy;
-    private Date createDate;
-    @ManyToOne
-    @JoinColumn(name = "modify_by")
-    private User modifyBy;
-    private Date modifyDate;
+    private boolean isCorrect;
 
     public Answer() {
     }
 
-    public Answer(String description, Question question, Boolean isCorrect, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+    public Answer(String description, boolean isCorrect) {
         this.description = description;
-        this.question = question;
         this.isCorrect = isCorrect;
-        this.createdBy = createdBy;
-        this.createDate = createDate;
-        this.modifyBy = modifyBy;
-        this.modifyDate = modifyDate;
     }
 
     public Long getId() {
@@ -52,46 +36,6 @@ public class Answer {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public User getModifyBy() {
-        return modifyBy;
-    }
-
-    public void setModifyBy(User modifyBy) {
-        this.modifyBy = modifyBy;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
     }
 
     public Boolean getCorrect() {
