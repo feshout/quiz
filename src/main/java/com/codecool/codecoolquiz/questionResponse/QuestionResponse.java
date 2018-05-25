@@ -1,8 +1,8 @@
 package com.codecool.codecoolquiz.questionResponse;
 
-import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.question.Question;
 import com.codecool.codecoolquiz.quiz.Quiz;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -13,10 +13,14 @@ public class QuestionResponse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Quiz quiz;
     @OneToOne
     private Question question;
     private String answer;
+
+    public QuestionResponse() {
+    }
 
     public QuestionResponse(Quiz quiz, Question question, String answer) {
         this.quiz = quiz;

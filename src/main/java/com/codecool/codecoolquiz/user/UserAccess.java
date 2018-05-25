@@ -13,6 +13,9 @@ public class UserAccess {
     private Long id;
     private String name;
 
+    public UserAccess() {
+    }
+
     public UserAccess(String name) {
         this.name = name;
     }

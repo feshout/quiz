@@ -8,6 +8,6 @@ public interface QuestionResponseRepository  extends CrudRepository<QuestionResp
 
     QuestionResponse findByQuestionId(Long id);
 
-    @Query("SELECT response FROM QuestionResponse response WHERE response.answer IS NULL AND response.quiz = :quizId")
+    @Query("SELECT response FROM QuestionResponse response WHERE response.answer IS NULL AND response.quiz.id = :quizId")
     Iterable<QuestionResponse> findAllWhereAnswerIsNullAndQuizId(@Param("quizId") Long quizId);
 }

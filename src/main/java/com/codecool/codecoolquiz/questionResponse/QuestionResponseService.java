@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface QuestionResponseService {
 
+    Iterable<QuestionResponse> findAll();
+
     QuestionResponse findByQuestionId(Long id);
 
     QuestionResponse findOneWhereAnswerIsNullAndQuizId(Long quizId);

@@ -23,6 +23,11 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
     }
 
     @Override
+    public Iterable<QuestionResponse> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public QuestionResponse findByQuestionId(Long id) {
         return repository.findByQuestionId(id);
     }

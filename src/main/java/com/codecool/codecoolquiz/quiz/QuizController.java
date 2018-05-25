@@ -38,10 +38,11 @@ public class QuizController {
     }
 
     @GetMapping("/{quizId}/question/{id}")
-    public QuestionResponse getQuestion(@PathVariable("id") Long id,
+    public QuestionResponse getQuestion(/*@PathVariable("id") Long id,*/
                                         @PathVariable("quizId") Long quizId) {
 
         return responseService.findOneWhereAnswerIsNullAndQuizId(quizId);
+//        return responseService.findByQuestionId(id);
     }
 
     @PostMapping("/{quizId}/question/{id}")
