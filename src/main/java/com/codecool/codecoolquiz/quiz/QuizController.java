@@ -29,15 +29,15 @@ public class QuizController {
     }
 
     @PostMapping("/")
-    public List<Category> chosenCategory(@RequestBody List<Category> categories, @RequestBody int count){
+    public Quiz chosenCategory(@RequestBody List<Category> categories, @RequestBody int count){
 
-        service.createQuiz(categories, count);
+        Quiz quiz = service.createQuiz(categories, count);
 
-        return categories;
+        return quiz;
     }
 
 
-    @GetMapping("/{quizId}/question/{id}")
+    @GetMapping("/{quizId}/question")
     public QuestionResponse getQuestion(@PathVariable("quizId") Long quizId) {
 
         List<QuestionResponse> response = responseService.findResponseWhereAnswerIsNullAndQuizId(quizId);
@@ -49,10 +49,8 @@ public class QuizController {
         return response.get(0);
     }
 
-    @PostMapping("/{quizId}/question/{id}")
-    public void sendResponse(@RequestBody QuestionResponse response,
-                             @PathVariable Long id,
-                             @PathVariable Long quizId) {
+    @PostMapping("/{quizId}/question")
+    public void sendResponse(@RequestBody QuestionResponse response) {
 
         responseService.sendResponse(response);
     }
@@ -62,8 +60,6 @@ public class QuizController {
 
         return responseService.findByQuizId(quizId);
     }
-
-
 }
 
 
