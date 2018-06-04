@@ -24,11 +24,12 @@ public class CategoryController {
         return "category/category";
     }
 
-    @GetMapping(path = "/{name}")
-    public String showByName(@PathVariable String name, Model model) {
-        model.addAttribute(this.categoryService.getByName(name));
-        return "category/category";
-    }
+//    un used method causing AmbiguousHandler exception
+//    @GetMapping(path = "/{name}")
+//    public String showByName(@PathVariable String name, Model model) {
+//        model.addAttribute(this.categoryService.getByName(name));
+//        return "category/category";
+//    }
 
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
