@@ -10,6 +10,7 @@
         <span th:text="${category.id}"></span>
         <p>Category name:</p>
         <span th:text="${category.name}"></span>
+        <a th:href="@{'/categories/edit/' + ${category.id}}"><button type="button">Edit category</button></a>
         <!--Uncomment after implementation of dating records-->
         <!--<p>Created by:</p>-->
         <!--<span th:text="${category.getCreatedBy().getName()}"></span>-->
