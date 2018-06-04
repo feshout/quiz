@@ -40,7 +40,13 @@ public class QuizController {
     @GetMapping("/{quizId}/question/{id}")
     public QuestionResponse getQuestion(@PathVariable("quizId") Long quizId) {
 
-        return responseService.findOneWhereAnswerIsNullAndQuizId(quizId);
+        List<QuestionResponse> response = responseService.findResponseWhereAnswerIsNullAndQuizId(quizId);
+
+        if (response.size() == 0) {
+
+            return null;
+        }
+        return response.get(0);
     }
 
     @PostMapping("/{quizId}/question/{id}")
