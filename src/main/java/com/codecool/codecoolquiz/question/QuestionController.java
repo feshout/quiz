@@ -71,6 +71,7 @@ public class QuestionController{
     public String updateQuestion(@PathVariable Long id, @ModelAttribute("questionForm") QuestionForm questionForm, @ModelAttribute Category category, Model model){
         questionService.update(questionForm, id);
         model.addAttribute("question", questionService.getById(id));
+        model.addAttribute("answers", answerService.getAllByQuestion(questionService.getById(id)));
 
         return "question/question";
     }

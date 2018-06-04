@@ -21,12 +21,13 @@
                             th:text="${category.name}">
                     </option>
                 </select>
-                <!--<p>Answers:</p>-->
-                <!--<ul th:each="answer : ${answers}">-->
-                    <!--<li>-->
-                        <!--<input th:object="${answer}" th:value="${answer.getDescription()}" />-->
-                    <!--</li>-->
-                <!--</ul>-->
+                <p>Answers:</p>
+                <ul th:each="answer : ${answers}">
+                    <li>
+                        <input th:object="${answer}" th:value="${answer.getDescription()}" />
+                        <input th:type="checkbox" th:value="${answer.getCorrect()}"/>
+                    </li>
+                </ul>
                 <input th:type="submit" th:value="Save"/>
             </form>
         </div>
