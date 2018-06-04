@@ -1,0 +1,9 @@
+<div th:fragment="content">
+    <form action="#" th:object="${category}" th:action="@{'{id}'(id=${category.id})}"
+          th:method="${category.id} != null ? put : post" >
+        <label for="name">Category name</label>
+        <input type="text" th:field="*{name}" th:value="${category}" id="name"/>
+
+        <th:block th:include="category/button :: ${button}" />
+    </form>
+</div>
