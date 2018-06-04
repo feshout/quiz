@@ -43,7 +43,6 @@ public class CategoryController {
         modelAndView.setViewName("category/categoryformbody :: content");
         modelAndView.addObject("category", new Category());
         modelAndView.addObject("title", "new");
-        modelAndView.addObject("button", "new");
 
         return modelAndView;
     }
@@ -63,7 +62,6 @@ public class CategoryController {
         modelAndView.setViewName("category/categoryformbody :: content");
         modelAndView.addObject("category", editCategory);
         modelAndView.addObject("title", "edit");
-        modelAndView.addObject("button", "edit");
 
         return modelAndView;
     }

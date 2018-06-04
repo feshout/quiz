@@ -4,6 +4,6 @@
         <label for="name">Category name</label>
         <input type="text" th:field="*{name}" th:value="${category}" id="name"/>
 
-        <th:block th:include="category/button :: ${button}" />
+        <th:block th:include="category/button :: ${category.id} != null ? edit : new" />
     </form>
 </div>
