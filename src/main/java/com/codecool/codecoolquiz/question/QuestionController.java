@@ -6,11 +6,9 @@ import com.codecool.codecoolquiz.category.CategoryService;
 import com.codecool.codecoolquiz.form.QuestionForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 
 
 @Controller
@@ -45,16 +43,19 @@ public class QuestionController{
     }
 
     @RequestMapping(path = "/new", method = RequestMethod.GET)
-    public String getQuestionForm(){
+    public String getQuestionForm(Model model){
+        model.addAttribute("categories", categoryService.getAll());
         return "question/questionForm";
     }
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
-    public String addQuestion(@ModelAttribute Question question){
-        questionService.save(question);
-        Question newQuestion = questionService.getByTitle(question.getTitle());
+    public String addQuestion(@ModelAttribute("questionForm") QuestionForm questionForm, @RequestParam Map<String, String> params, Model model){
 
-        return "redirect:question/question/" + newQuestion.getId().toString();
+        questionService.save(questionForm, params);
+        Question newQuestion = questionService.getByTitle(questionForm.getTitle());
+        model.addAttribute("question", newQuestion);
+
+        return "question/question";
     }
 
     @RequestMapping(path = "/update/{id}", method = RequestMethod.GET)
@@ -68,10 +69,9 @@ public class QuestionController{
     }
 
     @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
-    public String updateQuestion(@PathVariable Long id, @ModelAttribute("questionForm") QuestionForm questionForm, @ModelAttribute Category category, Model model){
-        questionService.update(questionForm, id);
+    public String updateQuestion(@PathVariable Long id, @ModelAttribute("questionForm") QuestionForm questionForm, Model model, @RequestParam Map<String, String> params){
+        questionService.update(questionForm, id, params);
         model.addAttribute("question", questionService.getById(id));
-        model.addAttribute("answers", answerService.getAllByQuestion(questionService.getById(id)));
 
         return "question/question";
     }
