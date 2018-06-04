@@ -10,7 +10,7 @@ public interface QuestionResponseService {
 //
     List<QuestionResponse> findByQuizId(Long quizId);
 
-    QuestionResponse findOneWhereAnswerIsNullAndQuizId(Long quizId);
+    List<QuestionResponse> findResponseWhereAnswerIsNullAndQuizId(Long quizId);
 
     void sendResponse(QuestionResponse userResponse);
 }
