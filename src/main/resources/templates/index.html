@@ -11,6 +11,8 @@
                         <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
                         <ul class="nav navbar-nav">
                             <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/categories}">Categories</a></li>
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/questions}">Questions</a></li>
+                            <li sec:authorize="hasRole('ROLE_USER')"><a href="#" th:href="@{/quiz}">Quiz</a></li>
                             <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Sign In</a></li>
                             <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/user/new}">Register</a></li>
                             <li sec:authorize="isAuthenticated()"><a><strong>Welcome <span sec:authentication="name"></span></strong></a></li>
