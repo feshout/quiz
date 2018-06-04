@@ -24,7 +24,7 @@ public class CategoryController {
         return "category/category";
     }
 
-//    un used method causing AmbiguousHandler exception
+//    unused method causing AmbiguousHandler exception
 //    @GetMapping(path = "/{name}")
 //    public String showByName(@PathVariable String name, Model model) {
 //        model.addAttribute(this.categoryService.getByName(name));
