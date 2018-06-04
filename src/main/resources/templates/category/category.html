@@ -11,7 +11,6 @@
         <span th:text="${category.id}"></span>
         <p>Category name:</p>
         <span th:text="${category.name}"></span>
-        <a th:href="@{'/categories/edit/' + ${category.id}}"><button type="button">Edit category</button></a>
         <!--Uncomment after implementation of dating records-->
         <!--<p>Created by:</p>-->
         <!--<span th:text="${category.getCreatedBy().getName()}"></span>-->
@@ -21,6 +20,11 @@
         <!--<span th:text="${category.getModifyBy().getName()}"></span>-->
         <!--<p>Last modification date:</p>-->
         <!--<span th:text="${category.getModifyDate()}"></span>-->
+        <a th:href="@{'/categories/edit/' + ${category.id}}"><button type="button">Edit category</button></a>
+        <form action="#" th:action="@{'{id}'(id=${category.id})}" th:method="delete" >
+            <input type="hidden" name="_method" value="delete" />
+            <button type="submit" id="submitButton">Delete category</button>
+        </form>
     </section>
 </body>
 </html>
