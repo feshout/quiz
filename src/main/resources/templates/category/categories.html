@@ -14,13 +14,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="category : ${categories}">
+            <tr th:each="category : ${categories}" >
                 <td th:text="${categoryStat.count}"></td>
                 <td th:text="${category.name}">Category</td>
                <td>
-                   <a th:href="@{'/categories/' + ${category.id}}">
-                       <button type="button">View details</button>
-                   </a>
+                   <a th:href="@{'/categories/' + ${category.id}}"><button type="button">View details</button></a>
                </td>
             </tr>
             </tbody>
