@@ -15,13 +15,21 @@ public class CategoryController {
     @GetMapping(path = "")
     public String index(Model model) {
         model.addAttribute("categories", this.categoryService.getAll());
+
+        model.addAttribute("title", "categories");
+        model.addAttribute("body", "categories");
+
         return "category/categories";
     }
 
     @GetMapping(path = "/{id}")
     public String showById(@PathVariable Long id, Model model) {
         model.addAttribute(this.categoryService.getById(id));
-        return "category/category";
+
+        model.addAttribute("title", "category");
+        model.addAttribute("body", "category");
+
+        return "category/categories";
     }
 
 //    unused method causing AmbiguousHandler exception
@@ -36,10 +44,11 @@ public class CategoryController {
         model.addAttribute("category", new Category());
 
         model.addAttribute("title", "new");
+        model.addAttribute("body", "form");
         model.addAttribute("button", "new");
         model.addAttribute("method", "post");
 
-        return "category/categoryform";
+        return "category/categories";
     }
 
     @PostMapping(path = "/new")
@@ -56,10 +65,11 @@ public class CategoryController {
         model.addAttribute("category", editCategory);
 
         model.addAttribute("title", "edit");
+        model.addAttribute("body", "form");
         model.addAttribute("button", "edit");
         model.addAttribute("method", "put");
 
-        return "category/categoryform";
+        return "category/categories";
     }
 
     @PutMapping(path = "/edit/{id}")
