@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title th:text="'Category ' + ${category.id} + ': ' +  ${category.name}">Title</title>
 </head>
 <body>
     <a th:href="@{'/categories'}"><button type="button">View all categories</button></a>
