@@ -3,7 +3,6 @@ package com.codecool.codecoolquiz.quiz;
 
 import com.codecool.codecoolquiz.category.Category;
 
-import com.codecool.codecoolquiz.question.QuestionRepository;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +38,7 @@ public class QuizController {
 
 
     @GetMapping("/{quizId}/question/{id}")
-    public QuestionResponse getQuestion(/*@PathVariable("id") Long id,*/
-                                        @PathVariable("quizId") Long quizId) {
+    public QuestionResponse getQuestion(@PathVariable("quizId") Long quizId) {
 
         return responseService.findOneWhereAnswerIsNullAndQuizId(quizId);
     }
@@ -51,6 +49,12 @@ public class QuizController {
                              @PathVariable Long quizId) {
 
         responseService.sendResponse(response);
+    }
+
+    @GetMapping("/{quizId}/results")
+    public List<QuestionResponse> getResults(@PathVariable Long quizId) {
+
+        return responseService.findByQuizId(quizId);
     }
 
 
