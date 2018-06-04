@@ -22,32 +22,62 @@
                     </option>
                 </select>
                 <p>Answers:</p>
-                <ul th:each="answer : ${answers}">
+                <ul>
                     <li>
-                        <input th:object="${answer}" th:value="${answer.getDescription()}" />
-                        <input th:type="checkbox" th:value="${answer.getCorrect()}"/>
+                        <input th:value="${question.answer1.getDescription()}" name="answer1" />
+                        <input th:type="checkbox" th:checked="${question.answer1.getCorrect()}"  name="isCorrect1"/>
+                    </li>
+                    <li>
+                        <input th:value="${question.answer2.getDescription()}" name="answer2"/>
+                        <input th:type="checkbox" th:checked="${question.answer2.getCorrect()}" name="isCorrect2"/>
+                    </li>
+                    <li>
+                        <input th:value="${question.answer3.getDescription()}" name="answer3"/>
+                        <input th:type="checkbox" th:checked="${question.answer3.getCorrect()}" name="isCorrect3"/>
+                    </li>
+                    <li>
+                        <input th:value="${question.answer4.getDescription()}" name="answer4"/>
+                        <input th:type="checkbox" th:checked="${question.answer4.getCorrect()}" name="isCorrect4"/>
                     </li>
                 </ul>
                 <input th:type="submit" th:value="Save"/>
             </form>
         </div>
         <div th:if="${question == null}">
-            <p>Title:</p>
-            <input th:value="${question.title}"/>
-            <p>Description:</p>
-            <input th:value="${question.description}"/>
-            <p>Category:</p>
-            <select th:field="${question.category}">
-                <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"></option>
-            </select>
-            <span th:text="${question.category.getName()}"></span>
-            <p>Answers:</p>
-            <ul th:each="answer : ${answers}">
-                <li th:text="${answer.description}"></li>
-            </ul>
+            <form th:method="POST" th:object="${questionForm}">
+                <p>Title:</p>
+                <input name="title"/>
+                <p>Description:</p>
+                <input name="description"/>
+                <p>Category:</p>
+                <select name="categoryId">
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}">
+                    </option>
+                </select>
+                <p>Answers:</p>
+                <ul>
+                    <li>
+                        <input name="answer1" />
+                        <input th:type="checkbox" name="isCorrect1"/>
+                    </li>
+                    <li>
+                        <input name="answer2"/>
+                        <input th:type="checkbox" name="isCorrect2"/>
+                    </li>
+                    <li>
+                        <input name="answer3"/>
+                        <input th:type="checkbox" name="isCorrect3"/>
+                    </li>
+                    <li>
+                        <input name="answer4"/>
+                        <input th:type="checkbox" name="isCorrect4"/>
+                    </li>
+                </ul>
+                <input th:type="submit" th:value="Save"/>
+            </form>
         </div>
-
-
     </section>
 
 </body>
