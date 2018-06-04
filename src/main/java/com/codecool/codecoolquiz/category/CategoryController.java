@@ -2,8 +2,8 @@ package com.codecool.codecoolquiz.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/categories")
@@ -13,23 +13,22 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping(path = "")
-    public String index(Model model) {
-        model.addAttribute("categories", this.categoryService.getAll());
+    public ModelAndView index(ModelAndView modelAndView) {
+        modelAndView.setViewName("category/categoriesbody :: content");
 
-        model.addAttribute("title", "categories");
-        model.addAttribute("body", "categories");
+        modelAndView.addObject("categories", this.categoryService.getAll());
+        modelAndView.addObject("title", "categories");
 
-        return "category/categories";
+        return modelAndView;
     }
 
     @GetMapping(path = "/{id}")
-    public String showById(@PathVariable Long id, Model model) {
-        model.addAttribute(this.categoryService.getById(id));
+    public ModelAndView showById(@PathVariable Long id, ModelAndView modelAndView) {
+        modelAndView.setViewName("category/categorybody :: content");
+        modelAndView.addObject(this.categoryService.getById(id));
+        modelAndView.addObject("title", "category");
 
-        model.addAttribute("title", "category");
-        model.addAttribute("body", "category");
-
-        return "category/categories";
+        return modelAndView;
     }
 
 //    unused method causing AmbiguousHandler exception
@@ -40,15 +39,13 @@ public class CategoryController {
 //    }
 
     @GetMapping(path = "/new")
-    public String getCreateForm(Model model){
-        model.addAttribute("category", new Category());
+    public ModelAndView getCreateForm(ModelAndView modelAndView){
+        modelAndView.setViewName("category/categoryformbody :: content");
+        modelAndView.addObject("category", new Category());
+        modelAndView.addObject("title", "new");
+        modelAndView.addObject("button", "new");
 
-        model.addAttribute("title", "new");
-        model.addAttribute("body", "form");
-        model.addAttribute("button", "new");
-        model.addAttribute("method", "post");
-
-        return "category/categories";
+        return modelAndView;
     }
 
     @PostMapping(path = "/new")
@@ -60,16 +57,15 @@ public class CategoryController {
     }
 
     @GetMapping(path = "/edit/{id}")
-    public String getCreateForm(@PathVariable Long id, Model model){
+    public ModelAndView getCreateForm(@PathVariable Long id, ModelAndView modelAndView){
         Category editCategory = this.categoryService.getById(id);
-        model.addAttribute("category", editCategory);
 
-        model.addAttribute("title", "edit");
-        model.addAttribute("body", "form");
-        model.addAttribute("button", "edit");
-        model.addAttribute("method", "put");
+        modelAndView.setViewName("category/categoryformbody :: content");
+        modelAndView.addObject("category", editCategory);
+        modelAndView.addObject("title", "edit");
+        modelAndView.addObject("button", "edit");
 
-        return "category/categories";
+        return modelAndView;
     }
 
     @PutMapping(path = "/edit/{id}")
