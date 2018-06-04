@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <section>
+        <div th:if="${question != null}">
+            <form th:action="@{${question.id}}" th:method="PUT" th:object="${questionForm}">
+                <p>Title:</p>
+                <input th:value="${question.title}" name="title"/>
+                <p>Description:</p>
+                <input th:value="${question.description}" name="description"/>
+                <p>Category:</p>
+                <select name="categoryId">
+                    <option th:selected="${question.category.getId() == category.getId()}"
+                            th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}">
+                    </option>
+                </select>
+                <p>Answers:</p>
+                <ul th:each="answer : ${answers}">
+                    <li>
+                        <input th:object="${answer}" th:value="${answer.getDescription()}" />
+                        <input th:type="checkbox" th:value="${answer.getCorrect()}"/>
+                    </li>
+                </ul>
+                <input th:type="submit" th:value="Save"/>
+            </form>
+        </div>
+        <div th:if="${question == null}">
+            <p>Title:</p>
+            <input th:value="${question.title}"/>
+            <p>Description:</p>
+            <input th:value="${question.description}"/>
+            <p>Category:</p>
+            <select th:field="${question.category}">
+                <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"></option>
+            </select>
+            <span th:text="${question.category.getName()}"></span>
+            <p>Answers:</p>
+            <ul th:each="answer : ${answers}">
+                <li th:text="${answer.description}"></li>
+            </ul>
+        </div>
+
+
+    </section>
+
+</body>
+</html>
