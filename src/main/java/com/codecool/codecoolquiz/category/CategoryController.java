@@ -37,7 +37,6 @@ public class CategoryController {
 
         model.addAttribute("title", "new");
         model.addAttribute("button", "new");
-        model.addAttribute("action", "categories/new");
         model.addAttribute("method", "post");
 
         return "category/categoryform";
@@ -48,7 +47,7 @@ public class CategoryController {
         this.categoryService.save(category);
        category = this.categoryService.getByName(category.getName());
 
-        return "category/category";
+        return "redirect:/categories/" + category.getId();
     }
 
     @GetMapping(path = "/edit/{id}")
@@ -58,7 +57,6 @@ public class CategoryController {
 
         model.addAttribute("title", "edit");
         model.addAttribute("button", "edit");
-        model.addAttribute("action", "categories/edit/" + editCategory.getId());
         model.addAttribute("method", "put");
 
         return "category/categoryform";
@@ -67,12 +65,12 @@ public class CategoryController {
     @PutMapping(path = "/edit/{id}")
     public String update(@ModelAttribute Category category) {
         this.categoryService.update(category);
-        return "category/category";
+        return "redirect:/categories/" + category.getId();
     }
 
     @DeleteMapping(path = "/{id}")
     public String delete(@PathVariable Long id) {
         this.categoryService.archiveById(id);
-        return "category/categories";
+        return "redirect:/categories";
     }
 }
