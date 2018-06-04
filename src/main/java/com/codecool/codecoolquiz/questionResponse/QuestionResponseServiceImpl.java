@@ -13,9 +13,18 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
         this.repository = repository;
     }
 
+
     @Override
-    public List<QuestionResponse> findAll() {
-        return null;
+    public QuestionResponse findOneWhereAnswerIsNullAndQuizId(Long quizId) {
+
+        List<QuestionResponse> questionResponse = (List<QuestionResponse>) repository.findAllWhereAnswerIsNullAndQuizId(quizId);
+
+        return questionResponse.get(0);
+    }
+
+    @Override
+    public Iterable<QuestionResponse> findAll() {
+        return repository.findAll();
     }
 
     @Override
@@ -29,4 +38,6 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
 
         repository.save(userResponse);
     }
+
+
 }

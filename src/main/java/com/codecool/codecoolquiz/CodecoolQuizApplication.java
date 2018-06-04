@@ -1,7 +1,14 @@
 package com.codecool.codecoolquiz;
 
 
+import com.codecool.codecoolquiz.answer.Answer;
+import com.codecool.codecoolquiz.answer.AnswerRepository;
+import com.codecool.codecoolquiz.question.Question;
 import com.codecool.codecoolquiz.question.QuestionRepository;
+import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
+import com.codecool.codecoolquiz.questionResponse.QuestionResponseRepository;
+import com.codecool.codecoolquiz.quiz.Quiz;
+import com.codecool.codecoolquiz.quiz.QuizRepository;
 import com.codecool.codecoolquiz.user.User;
 import com.codecool.codecoolquiz.user.UserAccess;
 import com.codecool.codecoolquiz.user.UserAccessRepository;
@@ -23,18 +30,9 @@ public class CodecoolQuizApplication {
 	}
 
 
-	@Bean
-	public CommandLineRunner demo(UserRepository userRepository,
-								  QuestionRepository questionRepository,
-								  UserAccessRepository userAccessRepository) {
-		return (args) -> {
 
-			UserAccess access = new UserAccess("admin");
-			userAccessRepository.save(access);
 
-//			User user = new User("test", new Date(), "login", "1234", )
 
-		};
-	}
+
 
 }
