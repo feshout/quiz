@@ -1,0 +1,20 @@
+<div th:fragment="content">
+    <a th:href="@{'categories/new'}" ><button type="button">Add new category</button></a>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col" id="id">Id</th>
+            <th scope="col" id="name">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${#lists.sort(categories)}" >
+            <td th:text="${categoryStat.count}"></td>
+            <td th:text="${category.name}">Category</td>
+            <td>
+                <a th:href="@{'/categories/' + ${category.id}}"><button type="button">View details</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
