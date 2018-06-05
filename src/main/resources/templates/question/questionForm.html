@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+    <a th:href="@{'/questions'}"><button type="button">View all questions</button></a>
     <section>
         <div th:if="${question != null}">
             <form th:action="@{${question.id}}" th:method="PUT" th:object="${questionForm}">
