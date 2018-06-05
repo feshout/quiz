@@ -21,9 +21,6 @@ public class AnnotationHandler {
     @Pointcut("@annotation(ResourceNotFound)")
     public void resourceNotFoundAnnotation(ResourceNotFound ResourceNotFound){}
 
-    @Pointcut("@annotation(ResourceForbidden)")
-    public void resourceForbiddenAnnotation(ResourceForbidden ResourceForbidden){}
-
     @Pointcut("@annotation(InternalServerError)")
     public void internalServerErrorAnnotation(InternalServerError InternalServerError){}
 
