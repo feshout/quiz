@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <th:block th:include="category/title :: ${title}" />
     <title>Title</title>
 </head>
-    <body>
-        <table>
-            <thead>
-            <tr>
-                <th scope="col" id="id">Id</th>
-                <th scope="col" id="name">Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="category : ${categories}">
-                <td th:text="${categoryStat.count}"></td>
-                <td th:text="${category.name}">Kategoria</td>
-            </tr>
-            </tbody>
-        </table>
-    </body>
-</html>
+<body>
+    <div th:include="category/body :: ${body}" />
+</body>
+</html><div th:fragment="form">
+    <form action="#" th:object="${category}" th:action="@{'{id}'(id=${category.id})}" th:method="${method}" >
+        <label for="name">Category name</label>
+        <input type="text" th:field="*{name}" th:value="${category}" id="name"/>
+
+        <th:block th:include="category/button :: ${button}" />
+    </form>
+</div>

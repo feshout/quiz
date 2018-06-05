@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en"></head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]'</div>
+        <h1>PAGE NOT FOUND</h1>
+        <a href="/">RETURN</a>
+    </div>
+</div>
+</body>
+</html>
