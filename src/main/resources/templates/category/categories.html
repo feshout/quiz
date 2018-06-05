@@ -5,6 +5,6 @@
     <th:block th:include="category/title :: ${title}" />
 </head>
 <body>
-    <div th:include="${view}" />
+    <div th:include="__${view}__" />
 </body>
 </html>
