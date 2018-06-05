@@ -24,10 +24,10 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
 //        return repository.findAll();
 //    }
 
-//    @Override
-//    public QuestionResponse findByQuestionId(Long id) {
-//        return repository.findByQuestionId(id);
-//    }
+    @Override
+    public QuestionResponse findByQuestionId(Long id) {
+        return repository.findByQuestionId(id);
+    }
 
     @Override
     public List<QuestionResponse> findByQuizId(Long quizId) {

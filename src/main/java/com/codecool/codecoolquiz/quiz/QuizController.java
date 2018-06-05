@@ -36,23 +36,24 @@ public class QuizController {
         return quiz;
     }
 
+    @GetMapping("/{quizId}/question/{id}")
+    public QuestionResponse getQuestion(@PathVariable("id") Long id) {
 
-    @GetMapping("/{quizId}/question")
-    public QuestionResponse getQuestion(@PathVariable("quizId") Long quizId) {
+        QuestionResponse response = responseService.findByQuestionId(id);
 
-        List<QuestionResponse> response = responseService.findResponseWhereAnswerIsNullAndQuizId(quizId);
-
-        if (response.size() == 0) {
-
-            return null;
-        }
-        return response.get(0);
+        return response;
     }
 
-    @PostMapping("/{quizId}/question")
+    @PostMapping("/{quizId}/question/{id}")
     public void sendResponse(@RequestBody QuestionResponse response) {
 
         responseService.sendResponse(response);
+    }
+
+    @GetMapping("/{quizId}/question")
+    public List<QuestionResponse> getQuestions(@PathVariable Long quizId) {
+
+        return responseService.findByQuizId(quizId);
     }
 
     @GetMapping("/{quizId}/results")
@@ -60,6 +61,8 @@ public class QuizController {
 
         return responseService.findByQuizId(quizId);
     }
+
+
 }
 
 

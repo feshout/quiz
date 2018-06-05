@@ -6,8 +6,8 @@ public interface QuestionResponseService {
 
 //    Iterable<QuestionResponse> findAll();
 //
-//    QuestionResponse findByQuestionId(Long id);
-//
+    QuestionResponse findByQuestionId(Long id);
+
     List<QuestionResponse> findByQuizId(Long quizId);
 
     List<QuestionResponse> findResponseWhereAnswerIsNullAndQuizId(Long quizId);

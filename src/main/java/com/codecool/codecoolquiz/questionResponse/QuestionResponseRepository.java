@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface QuestionResponseRepository  extends CrudRepository<QuestionResponse, Long> {
 
-//    QuestionResponse findByQuestionId(Long id);
-//
+    QuestionResponse findByQuestionId(Long id);
+
     List<QuestionResponse> findByQuizId(Long quizId);
 
     @Query("SELECT response FROM QuestionResponse response WHERE response.answer IS NULL AND response.quiz.id = :quizId")
