@@ -1,6 +1,5 @@
 package com.codecool.codecoolquiz;
 
-
 import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.answer.AnswerRepository;
 import com.codecool.codecoolquiz.category.Category;
@@ -33,7 +32,6 @@ public class RunAtStart {
     private final QuizRepository quizRepository;
     private final AnswerRepository answerRepository;
     private final CategoryRepository categoryRepository;
-
 
     @Autowired
     public RunAtStart(UserRepository userRepository, QuestionRepository questionRepository, UserAccessRepository userAccessRepository, QuestionResponseRepository questionResponseRepository, QuizRepository quizRepository, AnswerRepository answerRepository, CategoryRepository categoryRepository) {
@@ -90,7 +88,5 @@ public class RunAtStart {
 
         categoryRepository.save(category1);
         categoryRepository.save(category2);
-
     }
-
 }
