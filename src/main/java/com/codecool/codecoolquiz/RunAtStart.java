@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.Date;
 
 @Component
@@ -47,10 +48,13 @@ public class RunAtStart {
     @PostConstruct
     public void runAtStart() {
 
-        UserAccess access = new UserAccess("admin");
-        userAccessRepository.save(access);
+        UserAccess adminAccess = new UserAccess("admin");
+        UserAccess userAccess = new UserAccess("user");
+        userAccessRepository.save(Arrays.asList(adminAccess, userAccess));
 
-        User user = new User("test", new Date(), "login", "1234", true, access);
+        User admin = new User("A", new Date(), "admin", "admin", true, adminAccess);
+        User user = new User("U", new Date(), "user", "user", true, userAccess);
+        userRepository.save(Arrays.asList(admin, user));
 
         Quiz quiz = new Quiz(new Date(), user);
 
@@ -68,9 +72,6 @@ public class RunAtStart {
 
         QuestionResponse questionResponse1 = new QuestionResponse(quiz, question1, answer1.getDescription());
 
-        userRepository.save(user);
-
-
         quizRepository.save(quiz);
 
         answerRepository.save(answer1);
@@ -79,7 +80,6 @@ public class RunAtStart {
         answerRepository.save(answer4);
 
         questionRepository.save(question1);
-
 
         questionResponseRepository.save(questionResponse1);
 
