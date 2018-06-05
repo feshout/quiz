@@ -1,0 +1,15 @@
+<th:block th:fragment="new">
+    <title th:text="'Add category'"/>
+</th:block>
+
+<th:block th:fragment="edit">
+    <title th:text="'Edit category ' + ${category.name}"/>
+</th:block>
+
+<th:block th:fragment="categories">
+    <title th:text="Categories"/>
+</th:block>
+
+<th:block th:fragment="category">
+    <title th:text="'Category ' + ${category.id} + ': ' +  ${category.name}"/>
+</th:block>

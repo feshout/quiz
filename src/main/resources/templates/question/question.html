@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <a th:href="@{'/questions'}"><button type="button">View all questions</button></a>
     <section>
         <p>Title:</p>
         <span th:text="${question.title}"></span>
@@ -13,8 +14,11 @@
         <p>Category:</p>
         <span th:text="${question.category.getName()}"></span>
         <p>Answers:</p>
-        <ul th:each="answer : ${answers}">
-            <li th:text="${answer.description}"></li>
+        <ul>
+            <li th:text="${question.answer1.getDescription()}" th:classappend="${question.answer1.getCorrect()} ? correct : wrong"></li>
+            <li th:text="${question.answer2.getDescription()}" th:classappend="${question.answer2.getCorrect()} ? correct : wrong"></li>
+            <li th:text="${question.answer3.getDescription()}" th:classappend="${question.answer3.getCorrect()} ? correct : wrong"></li>
+            <li th:text="${question.answer4.getDescription()}" th:classappend="${question.answer4.getCorrect()} ? correct : wrong"></li>
         </ul>
         <!--Uncomment after implementation of dating records-->
         <!--<p>Created by:</p>-->

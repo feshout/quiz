@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
     <body>
+    <a th:href="@{'/'}"><button type="button">Return to main site</button></a>
+    <a href="/questions/new">
+        <input th:type="button" th:value="New"/>
+    </a>
+
         <table>
             <thead>
             <tr>
@@ -20,6 +25,17 @@
                 <td th:text="${question.title}">Pytanie</td>
                 <td th:text="${question.description}">Opis pytania</td>
                 <td th:text="${question.category.getName()}">Kategoria</td>
+                <td>
+                    <a th:href="${'/questions/update/' + question.getId()}">
+                        <input type="button" value="Edit"/>
+                    </a>
+                </td>
+                <td>
+                    <form action="#" th:action="@{'/questions/{id}'(id=${question.id})}" th:method="delete" >
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" id="submitButton">Delete </button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -10,4 +10,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     User getByLogin(String login);
 
+    User findDistinctByLogin(String login);
 }

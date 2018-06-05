@@ -1,22 +1,32 @@
-package com.codecool.codecoolquiz.quiz;
+package com.codecool.codecoolquiz.questionResponse;
 
-import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.question.Question;
+import com.codecool.codecoolquiz.quiz.Quiz;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class QuestionResponse {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Quiz quiz;
-    @ManyToOne
-    private Question question;
     @OneToOne
-    private Answer answer;
+    private Question question;
+    private String answer;
+
+    public QuestionResponse() {
+    }
+
+    public QuestionResponse(Quiz quiz, Question question, String answer) {
+        this.quiz = quiz;
+        this.question = question;
+        this.answer = answer;
+    }
 
     public Long getId() {
         return id;
@@ -42,11 +52,11 @@ public class QuestionResponse {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 }
