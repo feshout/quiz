@@ -6,8 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
@@ -15,18 +14,20 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AccessDeniedHandler accessDeniedHandler;
+    private UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(AccessDeniedHandler accessDeniedHandler) {
+    public SecurityConfig(AccessDeniedHandler accessDeniedHandler, UserDetailsService userDetailsService) {
 
         this.accessDeniedHandler = accessDeniedHandler;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/categories/**", "/questions/**").hasAnyRole("ADMIN")
+                .antMatchers("/categories/**", "/questions/**").hasAuthority("admin")
                 .antMatchers("/webjars/**", "/css/**", "/403", "/404", "/", "/user/new").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -48,9 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN")
-                .and()
-                .withUser("user").password("user").roles("USER");
+        // auth.inMemoryAuthentication()
+        //         .withUser("admin").password("admin").roles("ADMIN")
+        //         .and()
+        //         .withUser("user").password("user").roles("USER");
+        auth.userDetailsService(userDetailsService);
     }
+
 }

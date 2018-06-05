@@ -1,18 +1,24 @@
 package com.codecool.codecoolquiz.security;
 
+import com.codecool.codecoolquiz.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Component
+// @Component
 public class UserDetailsImpl implements UserDetails {
 
-    private String username;
-    private static final long serialVersionUID = 2059202961588104658L;
+    private User user;
+
+    public UserDetailsImpl(User user) {
+
+        this.user = user;
+    }
 
     @Override
     public boolean isEnabled() {
@@ -31,23 +37,23 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return user.isActive();
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return user.getLogin();
     }
 
     @Override
     public String getPassword() {
-        return "pankaj123";
+        return user.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> auths = new java.util.ArrayList<SimpleGrantedAuthority>();
-        auths.add(new SimpleGrantedAuthority("admin"));
+        List<SimpleGrantedAuthority> auths = new ArrayList<>();
+        auths.add(new SimpleGrantedAuthority(user.getUserAccess().getName()));
         return auths;
     }
 }
