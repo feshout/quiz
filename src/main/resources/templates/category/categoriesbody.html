@@ -14,7 +14,7 @@
             <td th:text="${category.id}"/>
             <td th:text="${category.name}"/>
             <td>
-                <a th:href="@{'/categories/' + ${category.id}}"><button type="button">View details</button></a>
+                <a th:href="@{'/categories/{id}'(id=${category.id})}"><button type="button">View details</button></a>
             </td>
         </tr>
         </tbody>
