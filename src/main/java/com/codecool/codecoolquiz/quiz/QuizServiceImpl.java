@@ -46,7 +46,7 @@ public class QuizServiceImpl implements QuizService {
         List<Question> randomQuestions = getRandomQuestions(questions, count);
 
         Quiz quiz = new Quiz(new Date(), userRepository.findOne(1L));
-        createResponses(quiz, questions);
+        createResponses(quiz, randomQuestions);
 
     }
 

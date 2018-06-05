@@ -72,21 +72,21 @@ public class RunAtStart {
 
         QuestionResponse questionResponse1 = new QuestionResponse(quiz, question1, answer1.getDescription());
 
+
         quizRepository.save(quiz);
-
-        answerRepository.save(answer1);
-        answerRepository.save(answer2);
-        answerRepository.save(answer3);
-        answerRepository.save(answer4);
-
-        questionRepository.save(question1);
-
-        questionResponseRepository.save(questionResponse1);
 
         Category category1 = new Category("SQL", true, user, new Date(), user, new Date());
         Category category2 = new Category("OOP", true, user, new Date(), user, new Date());
 
         categoryRepository.save(category1);
         categoryRepository.save(category2);
+
+
+        question1.setCategory(category1);
+        questionRepository.save(question1);
+
+        questionResponseRepository.save(questionResponse1);
+
+
     }
 }
