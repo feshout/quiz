@@ -34,7 +34,9 @@ public class UserController {
         if(this.userService.getByLogin(user.getLogin()) == null) {
 
             user.setDate(Timestamp.valueOf(LocalDateTime.now()));
+            user.setUserAccess(this.userAccessService.getByName(UserAccess.AccessMode.STUDENT.toString()));
             userService.save(user);
+
             return "login";
         }
         return "login";
