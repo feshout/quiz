@@ -1,9 +1,8 @@
 package com.codecool.codecoolquiz.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "person")
@@ -13,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Date date;
+    private Timestamp date;
     private String login;
     private String password;
     private boolean isActive = true;
@@ -36,11 +35,11 @@ public class User {
         this.name = name;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
