@@ -79,7 +79,7 @@ public class QuestionController{
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public String archiveQuestion(@PathVariable Long id) {
         questionService.archiveById(id);
-        return "redirect:question/questions";
+        return "redirect:/questions";
     }
 
 
