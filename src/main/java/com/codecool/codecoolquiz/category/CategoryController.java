@@ -14,20 +14,19 @@ public class CategoryController {
 
     @GetMapping(path = "")
     public String index(Model model) {
-        model.addAttribute("categories", this.categoryService.getAll());
+        model.addAttribute("view", "category/categoriesbody :: content");
 
+        model.addAttribute("categories", this.categoryService.getAll());
         model.addAttribute("title", "categories");
-        model.addAttribute("body", "categories");
 
         return "category/categories";
     }
 
     @GetMapping(path = "/{id}")
     public String showById(@PathVariable Long id, Model model) {
+        model.addAttribute("view", "category/categorybody :: content");
         model.addAttribute(this.categoryService.getById(id));
-
         model.addAttribute("title", "category");
-        model.addAttribute("body", "category");
 
         return "category/categories";
     }
@@ -41,12 +40,9 @@ public class CategoryController {
 
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
+        model.addAttribute("view", "category/categoryformbody :: content");
         model.addAttribute("category", new Category());
-
         model.addAttribute("title", "new");
-        model.addAttribute("body", "form");
-        model.addAttribute("button", "new");
-        model.addAttribute("method", "post");
 
         return "category/categories";
     }
@@ -62,12 +58,10 @@ public class CategoryController {
     @GetMapping(path = "/edit/{id}")
     public String getCreateForm(@PathVariable Long id, Model model){
         Category editCategory = this.categoryService.getById(id);
-        model.addAttribute("category", editCategory);
 
+        model.addAttribute("view", "category/categoryformbody :: content");
+        model.addAttribute("category", editCategory);
         model.addAttribute("title", "edit");
-        model.addAttribute("body", "form");
-        model.addAttribute("button", "edit");
-        model.addAttribute("method", "put");
 
         return "category/categories";
     }
