@@ -3,14 +3,16 @@
     <table>
         <thead>
         <tr>
-            <th scope="col" id="id">Id</th>
-            <th scope="col" id="name">Name</th>
+            <th scope="col" id="no" th:text="No."/>
+            <th scope="col" id="id" th:text="Id"/>
+            <th scope="col" id="name" th:text="Name"/>
         </tr>
         </thead>
         <tbody>
         <tr th:each="category : ${#lists.sort(categories)}" >
-            <td th:text="${categoryStat.count}"></td>
-            <td th:text="${category.name}">Category</td>
+            <td th:text="${categoryStat.count}"/>
+            <td th:text="${category.id}"/>
+            <td th:text="${category.name}"/>
             <td>
                 <a th:href="@{'/categories/' + ${category.id}}"><button type="button">View details</button></a>
             </td>
