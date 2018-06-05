@@ -15,11 +15,11 @@ import com.codecool.codecoolquiz.user.UserAccess;
 import com.codecool.codecoolquiz.user.UserAccessRepository;
 import com.codecool.codecoolquiz.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -52,8 +52,8 @@ public class RunAtStart {
         UserAccess userAccess = new UserAccess("user");
         userAccessRepository.save(Arrays.asList(adminAccess, userAccess));
 
-        User admin = new User("A", new Date(), "admin", "admin", true, adminAccess);
-        User user = new User("U", new Date(), "user", "user", true, userAccess);
+        User admin = new User("A", Timestamp.valueOf(LocalDateTime.now()), "admin", "admin", true, adminAccess);
+        User user = new User("U", Timestamp.valueOf(LocalDateTime.now()), "user", "user", true, userAccess);
         userRepository.save(Arrays.asList(admin, user));
 
         Quiz quiz = new Quiz(new Date(), user);
