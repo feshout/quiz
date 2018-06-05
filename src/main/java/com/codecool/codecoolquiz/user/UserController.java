@@ -16,9 +16,11 @@ import java.time.format.DateTimeFormatter;
 public class UserController {
 
     private UserService userService;
+    private UserAccessService userAccessService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserAccessService userAccessService) {
         this.userService = userService;
+        this.userAccessService = userAccessService;
     }
 
     @GetMapping(path = "/new")
