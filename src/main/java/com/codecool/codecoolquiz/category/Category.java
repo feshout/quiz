@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class Category {
+public class Category implements Comparable<Category>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,18 @@ public class Category {
     @ManyToOne
     private User modifyBy;
     private Date modifyDate;
+
+    public Category() {
+    }
+
+    public Category(String name, boolean isActive, User createdBy, Date createDate, User modifyBy, Date modifyDate) {
+        this.name = name;
+        this.isActive = isActive;
+        this.createdBy = createdBy;
+        this.createDate = createDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+    }
 
     public Long getId() {
         return id;
@@ -77,5 +89,16 @@ public class Category {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        if (this.id > o.getId()) {
+            return 1;
+        } else if (this.id < o.getId()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

@@ -19,6 +19,18 @@ public class User {
     @ManyToOne
     private UserAccess userAccess;
 
+    public User() {
+    }
+
+    public User(String name, Date date, String login, String password, boolean isActive, UserAccess userAccess) {
+        this.name = name;
+        this.date = date;
+        this.login = login;
+        this.password = password;
+        this.isActive = isActive;
+        this.userAccess = userAccess;
+    }
+
     public Long getId() {
         return id;
     }

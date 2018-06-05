@@ -1,9 +1,12 @@
 package com.codecool.codecoolquiz.question;
 
+import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.tag.Tag;
 import com.codecool.codecoolquiz.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,6 +21,18 @@ public class Question {
     private String title;
     private String description;
     private Boolean isActive = true;
+    @Cascade(CascadeType.ALL)
+    @ManyToOne
+    private Answer answer1;
+    @Cascade(CascadeType.ALL)
+    @ManyToOne
+    private Answer answer2;
+    @Cascade(CascadeType.ALL)
+    @ManyToOne
+    private Answer answer3;
+    @Cascade(CascadeType.ALL)
+    @ManyToOne
+    private Answer answer4;
     @ManyToOne
     private Category category;
     @ManyToOne
@@ -29,6 +44,15 @@ public class Question {
     @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private Set<Tag> tags;
+
+    public Question() {
+    }
+
+    public Question(String title, String description, Boolean isActive) {
+        this.title = title;
+        this.description = description;
+        this.isActive = isActive;
+    }
 
     public Long getId() {
         return id;
@@ -110,4 +134,35 @@ public class Question {
         this.tags = tags;
     }
 
+    public Answer getAnswer1() {
+        return answer1;
+    }
+
+    public void setAnswer1(Answer answer1) {
+        this.answer1 = answer1;
+    }
+
+    public Answer getAnswer2() {
+        return answer2;
+    }
+
+    public void setAnswer2(Answer answer2) {
+        this.answer2 = answer2;
+    }
+
+    public Answer getAnswer3() {
+        return answer3;
+    }
+
+    public void setAnswer3(Answer answer3) {
+        this.answer3 = answer3;
+    }
+
+    public Answer getAnswer4() {
+        return answer4;
+    }
+
+    public void setAnswer4(Answer answer4) {
+        this.answer4 = answer4;
+    }
 }

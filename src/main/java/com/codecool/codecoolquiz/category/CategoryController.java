@@ -14,51 +14,67 @@ public class CategoryController {
 
     @GetMapping(path = "")
     public String index(Model model) {
-        model.addAttribute(this.categoryService.getAll());
+        model.addAttribute("view", "category/categoriesbody :: content");
+
+        model.addAttribute("categories", this.categoryService.getAll());
+        model.addAttribute("title", "categories");
+
         return "category/categories";
     }
 
     @GetMapping(path = "/{id}")
     public String showById(@PathVariable Long id, Model model) {
+        model.addAttribute("view", "category/categorybody :: content");
         model.addAttribute(this.categoryService.getById(id));
-        return "category/category";
+        model.addAttribute("title", "category");
+
+        return "category/categories";
     }
 
-    @GetMapping(path = "/{name}")
-    public String showByName(@PathVariable String name, Model model) {
-        model.addAttribute(this.categoryService.getByName(name));
-        return "category/category";
-    }
+//    unused method causing AmbiguousHandler exception
+//    @GetMapping(path = "/{name}")
+//    public String showByName(@PathVariable String name, Model model) {
+//        model.addAttribute(this.categoryService.getByName(name));
+//        return "category/category";
+//    }
 
     @GetMapping(path = "/new")
     public String getCreateForm(Model model){
+        model.addAttribute("view", "category/categoryformbody :: content");
         model.addAttribute("category", new Category());
-        return "category/categoryform";
+        model.addAttribute("title", "new");
+
+        return "category/categories";
     }
 
     @PostMapping(path = "/new")
     public String create(@ModelAttribute Category category) {
         this.categoryService.save(category);
-        Category newCategory = this.categoryService.getByName(category.getName());
+       category = this.categoryService.getByName(category.getName());
 
-        return "redirect:categories/" + newCategory.getId();
+        return "redirect:/categories/" + category.getId();
     }
 
     @GetMapping(path = "/edit/{id}")
     public String getCreateForm(@PathVariable Long id, Model model){
-        model.addAttribute("category", this.categoryService.getById(id));
-        return "category/categoryform";
+        Category editCategory = this.categoryService.getById(id);
+
+        model.addAttribute("view", "category/categoryformbody :: content");
+        model.addAttribute("category", editCategory);
+        model.addAttribute("title", "edit");
+
+        return "category/categories";
     }
 
     @PutMapping(path = "/edit/{id}")
     public String update(@ModelAttribute Category category) {
         this.categoryService.update(category);
-        return "redirect:categories/" + category.getId();
+        return "redirect:/categories/" + category.getId();
     }
 
     @DeleteMapping(path = "/{id}")
     public String delete(@PathVariable Long id) {
         this.categoryService.archiveById(id);
-        return "redirect:category/categories";
+        return "redirect:/categories";
     }
 }
