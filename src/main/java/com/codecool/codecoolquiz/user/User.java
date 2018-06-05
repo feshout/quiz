@@ -2,7 +2,6 @@ package com.codecool.codecoolquiz.user;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "person")
