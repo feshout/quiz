@@ -22,7 +22,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, Date date, String login, String password, boolean isActive, UserAccess userAccess) {
+    public User(String name, Timestamp date, String login, String password, boolean isActive, UserAccess userAccess) {
         this.name = name;
         this.date = date;
         this.login = login;
