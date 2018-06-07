@@ -28,6 +28,7 @@ public class UserController {
         return "user/userForm";
     }
 
+
     @PostMapping(path = "/new")
     public String addUser(@ModelAttribute User user) {
 
