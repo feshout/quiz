@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-// @Component
+@Component
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
