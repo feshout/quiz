@@ -1,6 +1,5 @@
 package com.codecool.codecoolquiz;
 
-
 import com.codecool.codecoolquiz.answer.Answer;
 import com.codecool.codecoolquiz.answer.AnswerRepository;
 import com.codecool.codecoolquiz.category.Category;
@@ -16,11 +15,12 @@ import com.codecool.codecoolquiz.user.UserAccess;
 import com.codecool.codecoolquiz.user.UserAccessRepository;
 import com.codecool.codecoolquiz.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 
 @Component
@@ -33,7 +33,6 @@ public class RunAtStart {
     private final QuizRepository quizRepository;
     private final AnswerRepository answerRepository;
     private final CategoryRepository categoryRepository;
-
 
     @Autowired
     public RunAtStart(UserRepository userRepository, QuestionRepository questionRepository, UserAccessRepository userAccessRepository, QuestionResponseRepository questionResponseRepository, QuizRepository quizRepository, AnswerRepository answerRepository, CategoryRepository categoryRepository) {
@@ -49,10 +48,13 @@ public class RunAtStart {
     @PostConstruct
     public void runAtStart() {
 
-        UserAccess access = new UserAccess("admin");
-        userAccessRepository.save(access);
+        UserAccess adminAccess = new UserAccess("admin");
+        UserAccess userAccess = new UserAccess("user");
+        userAccessRepository.save(Arrays.asList(adminAccess, userAccess));
 
-        User user = new User("test", new Date(), "login", "1234", true, access);
+        User admin = new User("A", Timestamp.valueOf(LocalDateTime.now()), "admin", "admin", true, adminAccess);
+        User user = new User("U", Timestamp.valueOf(LocalDateTime.now()), "user", "user", true, userAccess);
+        userRepository.save(Arrays.asList(admin, user));
 
         Quiz quiz = new Quiz(new Date(), user);
 
@@ -70,20 +72,8 @@ public class RunAtStart {
 
         QuestionResponse questionResponse1 = new QuestionResponse(quiz, question1, answer1.getDescription());
 
-        userRepository.save(user);
-
 
         quizRepository.save(quiz);
-
-        answerRepository.save(answer1);
-        answerRepository.save(answer2);
-        answerRepository.save(answer3);
-        answerRepository.save(answer4);
-
-        questionRepository.save(question1);
-
-
-        questionResponseRepository.save(questionResponse1);
 
         Category category1 = new Category("SQL", true, user, new Date(), user, new Date());
         Category category2 = new Category("OOP", true, user, new Date(), user, new Date());
@@ -91,6 +81,12 @@ public class RunAtStart {
         categoryRepository.save(category1);
         categoryRepository.save(category2);
 
-    }
 
+        question1.setCategory(category1);
+        questionRepository.save(question1);
+
+        questionResponseRepository.save(questionResponse1);
+
+
+    }
 }

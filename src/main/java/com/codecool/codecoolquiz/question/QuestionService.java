@@ -5,6 +5,7 @@ import com.codecool.codecoolquiz.form.QuestionForm;
 import com.codecool.codecoolquiz.tag.Tag;
 
 import java.util.List;
+import java.util.Map;
 
 public interface QuestionService {
 
@@ -16,9 +17,9 @@ public interface QuestionService {
 
     List<Question> getAllByCategory(Category category);
 
-    void save(Question question);
+    void save(QuestionForm questionForm, Map<String, String> params);
 
-    void update(QuestionForm questionForm, Long id);
+    void update(QuestionForm questionForm, Long id, Map<String, String> params);
 
 //    Uncomment after implementing tag repository
 //    List<Question> getAllByTag(Tag tag);
