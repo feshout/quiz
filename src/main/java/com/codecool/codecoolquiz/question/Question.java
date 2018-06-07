@@ -5,6 +5,8 @@ import com.codecool.codecoolquiz.category.Category;
 import com.codecool.codecoolquiz.tag.Tag;
 import com.codecool.codecoolquiz.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,12 +21,16 @@ public class Question {
     private String title;
     private String description;
     private Boolean isActive = true;
+    @Cascade(CascadeType.ALL)
     @ManyToOne
     private Answer answer1;
+    @Cascade(CascadeType.ALL)
     @ManyToOne
     private Answer answer2;
+    @Cascade(CascadeType.ALL)
     @ManyToOne
     private Answer answer3;
+    @Cascade(CascadeType.ALL)
     @ManyToOne
     private Answer answer4;
     @ManyToOne

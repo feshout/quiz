@@ -40,20 +40,17 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public void createQuiz(List<Category> categories, int count) {
+    public Quiz createQuiz(List<Category> categories, int count) {
 
         List<Question> questions = getQuestions(categories);
         List<Question> randomQuestions = getRandomQuestions(questions, count);
 
         Quiz quiz = new Quiz(new Date(), userRepository.findOne(1L));
-        createResponses(quiz, questions);
+        createResponses(quiz, randomQuestions);
 
+        return quiz;
     }
 
-    @Override
-    public void sendResponse(QuestionResponse userResponse) {
-
-    }
 
     private List<Question> getRandomQuestions(List<Question> questions, int count) {
 

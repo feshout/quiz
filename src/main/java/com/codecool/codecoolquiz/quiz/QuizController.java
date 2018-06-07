@@ -3,7 +3,6 @@ package com.codecool.codecoolquiz.quiz;
 
 import com.codecool.codecoolquiz.category.Category;
 
-import com.codecool.codecoolquiz.question.QuestionRepository;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponse;
 import com.codecool.codecoolquiz.questionResponse.QuestionResponseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,28 +29,40 @@ public class QuizController {
     }
 
     @PostMapping("/")
-    public List<Category> chosenCategory(@RequestBody List<Category> categories, @RequestBody int count){
+    public Quiz chosenCategory(@RequestBody List<Category> categories, @RequestBody int count){
 
-        service.createQuiz(categories, count);
+        Quiz quiz = service.createQuiz(categories, count);
 
-        return categories;
+        return quiz;
     }
 
     @GetMapping("/{quizId}/question/{id}")
-    public QuestionResponse getQuestion(/*@PathVariable("id") Long id,*/
-                                        @PathVariable("quizId") Long quizId) {
+    public QuestionResponse getQuestion(@PathVariable("id") Long id) {
 
-        return responseService.findOneWhereAnswerIsNullAndQuizId(quizId);
-//        return responseService.findByQuestionId(id);
+        QuestionResponse response = responseService.findByQuestionId(id);
+
+        return response;
     }
 
     @PostMapping("/{quizId}/question/{id}")
-    public void sendResponse(@RequestBody QuestionResponse response,
-                             @PathVariable Long id,
-                             @PathVariable Long quizId) {
+    public void sendResponse(@RequestBody QuestionResponse response) {
 
         responseService.sendResponse(response);
     }
+
+    @GetMapping("/{quizId}/question")
+    public List<QuestionResponse> getQuestions(@PathVariable Long quizId) {
+
+        return responseService.findByQuizId(quizId);
+    }
+
+    @GetMapping("/{quizId}/results")
+    public List<QuestionResponse> getResults(@PathVariable Long quizId) {
+
+        return responseService.findByQuizId(quizId);
+    }
+
+
 }
 
 
