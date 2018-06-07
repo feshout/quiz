@@ -9,7 +9,6 @@ import java.util.List;
 
 
 @Repository
-
 public interface QuestionResponseRepository  extends CrudRepository<QuestionResponse, Long> {
 
     QuestionResponse findByQuestionId(Long id);
