@@ -10,8 +10,7 @@ public interface QuizService {
 
     Iterable<Category> findCategories();
 
-    void createQuiz(List<Category> categories, int count);
+    Quiz createQuiz(List<Category> categories, int count);
 
-    void sendResponse(QuestionResponse userResponse);
 
 }

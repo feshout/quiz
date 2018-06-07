@@ -1,9 +1,6 @@
 package com.codecool.codecoolquiz.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class UserAccess {
@@ -36,4 +33,7 @@ public class UserAccess {
         this.name = name;
     }
 
+    public enum AccessMode {
+        ADMIN, STUDENT
+    }
 }

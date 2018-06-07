@@ -1,7 +1,7 @@
 package com.codecool.codecoolquiz.user;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "person")
@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Date date;
+    private Timestamp date;
     private String login;
     private String password;
     private boolean isActive = true;
@@ -21,7 +21,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, Date date, String login, String password, boolean isActive, UserAccess userAccess) {
+    public User(String name, Timestamp date, String login, String password, boolean isActive, UserAccess userAccess) {
         this.name = name;
         this.date = date;
         this.login = login;
@@ -46,11 +46,11 @@ public class User {
         this.name = name;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

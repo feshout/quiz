@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
-<body>
+<div th:fragment="content">
+    <a th:href="@{'/categories'}"><button type="button">View all categories</button></a>
     <section>
         <p>Id:</p>
         <span th:text="${category.id}"></span>
@@ -19,6 +14,12 @@
         <!--<span th:text="${category.getModifyBy().getName()}"></span>-->
         <!--<p>Last modification date:</p>-->
         <!--<span th:text="${category.getModifyDate()}"></span>-->
+        <div>
+            <a th:href="@{'/categories/edit/' + ${category.id}}"><button type="button">Edit category</button></a>
+            <form action="#" th:action="@{'{id}'(id=${category.id})}" th:method="delete" >
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" id="submitButton">Delete category</button>
+            </form>
+        </div>
     </section>
-</body>
-</html>
+</div>

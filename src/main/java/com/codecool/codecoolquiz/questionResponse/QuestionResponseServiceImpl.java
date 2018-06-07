@@ -1,7 +1,6 @@
 package com.codecool.codecoolquiz.questionResponse;
 
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -15,17 +14,15 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
 
 
     @Override
-    public QuestionResponse findOneWhereAnswerIsNullAndQuizId(Long quizId) {
+    public List<QuestionResponse> findResponseWhereAnswerIsNullAndQuizId(Long quizId) {
 
-        List<QuestionResponse> questionResponse = (List<QuestionResponse>) repository.findAllWhereAnswerIsNullAndQuizId(quizId);
-
-        return questionResponse.get(0);
+        return repository.findResponseWhereAnswerIsNullAndQuizId(quizId);
     }
 
-    @Override
-    public Iterable<QuestionResponse> findAll() {
-        return repository.findAll();
-    }
+//    @Override
+//    public Iterable<QuestionResponse> findAll() {
+//        return repository.findAll();
+//    }
 
     @Override
     public QuestionResponse findByQuestionId(Long id) {
@@ -33,11 +30,14 @@ public class QuestionResponseServiceImpl implements QuestionResponseService {
     }
 
     @Override
-    public void sendResponse(QuestionResponse userResponse) {
+    public List<QuestionResponse> findByQuizId(Long quizId) {
 
+        return repository.findByQuizId(quizId);
+    }
+
+    @Override
+    public void sendResponse(QuestionResponse userResponse) {
 
         repository.save(userResponse);
     }
-
-
 }

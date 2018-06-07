@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <th:block th:include="category/title :: ${title}" />
 </head>
-    <body>
-        <table>
-            <thead>
-            <tr>
-                <th scope="col" id="id">Id</th>
-                <th scope="col" id="name">Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="category : ${categories}">
-                <td th:text="${categoryStat.count}"></td>
-                <td th:text="${category.name}">Kategoria</td>
-            </tr>
-            </tbody>
-        </table>
-    </body>
+<body>
+    <div th:include="__${view}__" />
+</body>
 </html>

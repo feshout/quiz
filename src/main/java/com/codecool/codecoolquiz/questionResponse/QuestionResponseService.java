@@ -4,11 +4,13 @@ import java.util.List;
 
 public interface QuestionResponseService {
 
-    Iterable<QuestionResponse> findAll();
-
+//    Iterable<QuestionResponse> findAll();
+//
     QuestionResponse findByQuestionId(Long id);
 
-    QuestionResponse findOneWhereAnswerIsNullAndQuizId(Long quizId);
+    List<QuestionResponse> findByQuizId(Long quizId);
+
+    List<QuestionResponse> findResponseWhereAnswerIsNullAndQuizId(Long quizId);
 
     void sendResponse(QuestionResponse userResponse);
 }
