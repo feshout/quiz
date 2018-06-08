@@ -27,7 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user named " + username);
         } else {
-            return new UserDetailsImpl(user);
+            UserDetailsImpl userDetails = new UserDetailsImpl();
+            userDetails.setUser(user);
+
+            return userDetails;
         }
     }
 }

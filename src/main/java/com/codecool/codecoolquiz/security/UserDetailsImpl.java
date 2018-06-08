@@ -1,6 +1,7 @@
 package com.codecool.codecoolquiz.security;
 
 import com.codecool.codecoolquiz.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,8 +16,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private User user;
 
-    public UserDetailsImpl(User user) {
-
+    public void setUser(User user) {
         this.user = user;
     }
 
